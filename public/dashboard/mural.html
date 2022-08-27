@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcquaTec | Avisos</title>
+
+    <!-- <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="./dashboards.css"> -->
+    <script src="../js/funcoes.js"></script>
+
+    <link rel="stylesheet" href="css/styleHeaderDash.css">
+    <link rel="stylesheet" href="css/styleMural.css">
+    <link rel="stylesheet" href="css/styleFooter.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body onload="validarSessao(), atualizarFeed()">
+    <!-- <body onload="validarSessao()"> -->
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <h1>SOCCER LIFE</h1>
+
+    </div>
+
+    <!-- MENU -->
+
+    <!-- <div class="tudo-mural"> -->
+        <div class="banner-menu">
+
+            <div class="menu">
+
+                <div class="hello">
+                    <h3>Olá, <span>Raul</span>!</h3>
+
+                </div>
+
+                <div class="menu-itens">
+                    <ul>
+                        <li class="agora"> <a href=""> <img src="css/assets/icone-debate.png" alt=""> Debate</a></li>
+                        <li> <a href="classificacao.html"> <img src="css/assets/icone-podio.png" alt="">
+                                Classificação</a></li>
+                        <li><a href="enquetes.html"> <img src="css/assets/icone-enquete.png" alt=""> Enquetes</a></li>
+                        <!-- <li> <a href="index.html">Sair</a></li> -->
+                        <div class="btn-logout" onclick="limparSessao()">
+                            <h3>Sair</h3>
+                        </div>
+
+                    </ul>
+                </div>
+
+            </div>
+
+
+            <!-- MURAL -->
+
+            <div class="mural">
+
+
+                <div class="avisos">
+
+                    <div class="tudo-mural">
+                        <div class="container-mural">
+                            <h1>Publicar uma opinião </h1>
+                            <div class="div-form">
+                                <form id="form_postagem" method="post" onsubmit="return publicar()">
+                                    <label>
+                                        Tema:
+                                        <br>
+                                        <input name="titulo" id="titulo" maxlength="100" type="text" autofocus>
+                                        <br>
+                                    </label>
+                                    <br>
+                                    <label>
+                                        Opine: (máx de 300 caracteres)
+                                        <br>
+                                        <textarea name="descricao" id="textarea_descricao" maxlength="300"
+                                            rows="5"></textarea>
+                                    </label>
+                                    <br><br>
+                                    <button><span>Enviar</span> </button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <div class="regras">
+                            <ul>
+                                <p>Regras</p>
+                                <li>Respeito</li>
+                                <li>Sem palavrões</li>
+                                <li>Sem clubismo</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="area-debate">
+
+                        <h1>Área de debate</h1>
+
+                        <div class="div-results">
+                            <div id="feed_container" class="feed-container">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+        </div>
+
+        <footer>
+
+            <div class="conteiner-rodape">
+
+                <div class="rodape">
+
+                    <p>Projeto feito com amor por: Raul Meira de Souza</p>
+
+                    <div class="conteudo">
+
+                        <p>Me siga nas redes sociais</p>
+
+                        <div class="redes">
+
+                            <div class="insta"><a href="https://www.instagram.com/_raulmz/" class="imagem"><img
+                                        src="css/assets/icone-instagram.png" alt=""></a></div>
+
+                            <div class="face"><a href="https://www.facebook.com/raul.meira2/" class="imagem"><img
+                                        src="css/assets/icone-facebook.jpg" alt=""></a></div>
+
+                            <div class="linkedin"><a href="https://www.linkedin.com/in/raul-meira-de-souza-3180b61b2/"
+                                    class="imagem"><img src="css/assets/icone-linkedin.png" alt=""></a></div>
+
+                            <div class="github"> <a href="https://github.com/RaulMeira" class="imagem"> <img
+                                        src="css/assets/icone-github.png" alt="">
+                                </a></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </footer>
+
+    
+
+</body>
+
+</html>
+
+<script>
+
+    function limparFormulario() {
+        document.getElementById("form_postagem").reset();
+    }
+
+    function publicar() {
+        var idUsuario = sessionStorage.ID_USUARIO;
+
+        var corpo = {
+            titulo: form_postagem.titulo.value,
+            descricao: form_postagem.descricao.value
+        }
+
+        fetch(`/avisos/publicar/${idUsuario}`, {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(corpo)
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                window.alert("Opinião realizado com sucesso pelo usuario de ID: " + idUsuario + "!");
+                window.location = "/dashboard/mural.html";
+                limparFormulario();
+                finalizarAguardar();
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
+
+        return false;
+
+    }
+
+    function editar(idAviso) {
+        sessionStorage.ID_POSTAGEM_EDITANDO = idAviso;
+        console.log("cliquei em editar - " + idAviso);
+        window.alert("Você será redirecionado à página de edição do aviso de id número: " + idAviso);
+        window.location = "/dashboard/edicao-aviso.html"
+
+    }
+
+    function deletar(idAviso) {
+        console.log("Criar função de apagar post escolhido - ID" + idAviso);
+        fetch(`/avisos/deletar/${idAviso}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(function (resposta) {
+
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "/dashboard/mural.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+    }
+
+    function atualizarFeed() {
+        //aguardar();
+        fetch("/avisos/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (let i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                        var spanTitulo = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var divDescricao = document.createElement("div");
+                        var divButtons = document.createElement("div");
+                        var btnEditar = document.createElement("button");
+                        var btnDeletar = document.createElement("button");
+
+
+                        spanID.innerHTML = "<br>Aviso: <b>" + publicacao.idAviso + "</b> <br>";
+                        spanTitulo.innerHTML = "Tema: <b>" + publicacao.titulo + "</b><br>";
+                        spanNome.innerHTML = "Nome: <b>" + publicacao.nome + "</b><br>";
+                        divDescricao.innerHTML = "Descrição: <b>" + publicacao.descricao + "</b><br><br>";
+                        btnEditar.innerHTML = "Editar";
+                        btnDeletar.innerHTML = "Deletar";
+
+                        divPublicacao.className = "publicacao";
+                        spanTitulo.id = "inputNumero" + publicacao.idAviso;
+                        spanNome.className = "publicacao-nome";
+                        spanTitulo.className = "publicacao-titulo";
+                        divDescricao.className = "publicacao-descricao";
+
+                        divButtons.className = "div-buttons"
+
+                        btnEditar.className = "publicacao-btn-editar"
+                        btnEditar.id = "btnEditar" + publicacao.idAviso;
+                        btnEditar.setAttribute("onclick", `editar(${publicacao.idAviso})`);
+
+                        btnDeletar.className = "publicacao-btn-editar"
+                        btnDeletar.id = "btnDeletar" + publicacao.idAviso;
+                        btnDeletar.setAttribute("onclick", `deletar(${publicacao.idAviso})`);
+
+                        divPublicacao.appendChild(spanID);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanTitulo);
+                        divPublicacao.appendChild(divDescricao);
+                        divPublicacao.appendChild(divButtons);
+                        divButtons.appendChild(btnEditar);
+                        divButtons.appendChild(btnDeletar);
+                        feed.appendChild(divPublicacao);
+                    }
+
+                    finalizarAguardar();
+                });
+            } else {
+                throw ('Houve um erro na API!');
+            }
+        }).catch(function (resposta) {
+            console.error(resposta);
+            finalizarAguardar();
+        });
+    }
+
+    function testar() {
+        aguardar();
+
+        var formulario = new URLSearchParams(new FormData(document.getElementById("form_postagem")));
+
+        var divResultado = document.getElementById("div_feed");
+
+        divResultado.appendChild(document.createTextNode(formulario.get("descricao")));
+        divResultado.innerHTML = formulario.get("descricao");
+
+        finalizarAguardar();
+
+        return false;
+    }
+
+</script>

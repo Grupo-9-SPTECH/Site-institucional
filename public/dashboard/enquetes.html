@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styleHeaderDash.css">
+    <link rel="stylesheet" href="css/styleEnquete.css">
+    <link rel="stylesheet" href="css/styleFooter.css">
+
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+
+</head>
+
+<body onload="validarSessao(), atualizarFeed()" style="background-color: #161618;">
+    <!-- HEADER -->
+    <div class="header">
+
+        <h1>SOCCER LIFE</h1>
+
+    </div>
+
+    <!-- MENU -->
+    <div class="tudo-enq">
+        <div class="banner-enq">
+
+            <div class="menu">
+
+                <div class="hello">
+                    <h3>Olá, <span">Raul</span>!</h3>
+
+                </div>
+
+                <div class="menu-itens">
+                    <ul>
+                        <li> <a href="mural.html"> <img src="css/assets/icone-debate.png" alt=""> Debate</a></li>
+                        <li> <a href="classificacao.html"> <img src="css/assets/icone-podio.png" alt="">
+                                Classificação</a>
+                        </li>
+                        <li class="agora"><a href="enquetes.html"> <img src="css/assets/icone-enquete.png" alt="">
+                                Enquetes</a></li>
+                        <!-- <li> <a href="index.html">Sair</a></li> -->
+                        <div class="btn-logout" onclick="limparSessao()">
+                            <h3>Sair</h3>
+                        </div>
+
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- ENQUETE -->
+            <div class="conteiner-enq">
+
+                <div class="pegatudo">
+
+                    <!-- GRAFICOOOOO -->
+
+                    <div class="analytic">
+
+                        <div class="mensagem">
+                            <p>Jogadores preferidos dos usuários cadastrados:</p>
+
+                        </div>
+
+                        <div class="conteiner-grafico">
+                            <div class="graph">
+                                <canvas id="canvas_grafico"></canvas>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- VOTAÇÃO -->
+
+                    <div class="escrita">
+                        <h1>VOTE AQUI PARA O MELHOR JOGADOR DE 2022 (máx. 5 votos por usuário)</h1>
+                    </div>
+
+                    <div class="imagens">
+
+                        <!-- messi -->
+                        <label for="ipt_messi">
+                            <div class="foto_messi">
+                                <input type="checkbox" id="ipt_messi">
+                            </div>
+                        </label>
+
+                        <!-- ney  -->
+                        <label for="ipt_neymar">
+                            <div class="foto_neymar">
+                                <input type="checkbox" id="ipt_neymar">
+                            </div>
+                        </label>
+
+                        <!-- veiga -->
+                        <label for="ipt_veiga">
+                            <div class="foto_veiga">
+                                <input type="checkbox" id="ipt_veiga">
+                            </div>
+                        </label>
+
+
+                    </div>
+
+                    <div class="votacao">
+                        <button onclick="registrar()"><span>Registrar voto</span></button>
+                    </div>
+
+
+                    <!-- MENSAGENS -->
+                    <div class="resultado">
+
+                        <div class="result-final">
+
+                            <div id="mensagem" class="msg"></div>
+                            <br>
+                            <div id="final" class="finaleira"></div>
+
+                        </div>
+
+                        <div class="acabou"> <span id="vencedor"></span>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RODAPÉ -->
+
+        <footer>
+
+            <div class="conteiner-rodape">
+
+                <div class="rodape">
+
+                    <p>Projeto feito com amor por: Raul Meira de Souza</p>
+
+                    <div class="conteudo">
+
+                        <p>Me siga nas redes sociais</p>
+
+                        <div class="redes">
+
+                            <div class="insta"><a href="https://www.instagram.com/_raulmz/" class="imagem"><img
+                                        src="css/assets/icone-instagram.png" alt=""></a></div>
+
+                            <div class="face"><a href="https://www.facebook.com/raul.meira2/" class="imagem"><img
+                                        src="css/assets/icone-facebook.jpg" alt=""></a></div>
+
+                            <div class="linkedin"><a href="https://www.linkedin.com/in/raul-meira-de-souza-3180b61b2/"
+                                    class="imagem"><img src="css/assets/icone-linkedin.png" alt=""></a></div>
+
+                            <div class="github"> <a href="https://github.com/RaulMeira" class="imagem"> <img
+                                        src="css/assets/icone-github.png" alt="">
+                                </a></div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </footer>
+
+    </div>
+
+</body>
+
+</html>
+
+
+<script>
+
+    // RESULTADOS DA ENQUETE
+    var vt_votos = []
+    var vt_messi = []
+    var vt_neymar = []
+    var vt_veiga = []
+    var maior = 0
+    var maiorNome = ''
+
+
+    function registrar() {
+
+
+        if (ipt_messi.checked == false && ipt_veiga.checked == false && ipt_neymar.checked == false) {
+            alert("voce precisa escolher um jogador")
+        }
+
+        else {
+
+
+            if (ipt_messi.checked === true) {
+
+                vt_messi.push(1)
+                ipt_messi.checked = ""
+                vt_votos.push("messi")
+
+            }
+
+            if (ipt_neymar.checked === true) {
+
+                vt_neymar.push(1)
+                ipt_neymar.checked = ""
+                vt_votos.push("neymar")
+
+            }
+
+            if (ipt_veiga.checked === true) {
+
+                vt_veiga.push(1)
+                ipt_veiga.checked = ""
+
+                vt_votos.push("veiga")
+
+            }
+
+            mensagem.innerHTML = `Quantidade de votos: ${vt_votos.length} <br>
+                Votos para o Messi: ${vt_messi.length} <br>
+                Votos para o Neymar: ${vt_neymar.length} <br>
+                Votos para o Veiga: ${vt_veiga.length} <br>`
+
+            final.innerHTML = ''
+            vencedor.innerHTML = ''
+
+            for (var index = 1; index <= vt_votos.length; index++) {
+
+                if (vt_messi.length > maior) {
+                    maior = vt_messi.length
+                    maiorNome = "Messi"
+                }
+                else {
+                    if (vt_neymar.length > maior) {
+                        maior = vt_neymar.length
+                        maiorNome = "Neymar"
+
+                    }
+                    else {
+                        if (vt_veiga.length > maior) {
+                            maior = vt_veiga.length
+                            maiorNome = "Veiga"
+                        }
+                    }
+                }
+
+                if (index == 6) {
+                    alert("Voce chegou ao limite de votos por usuario")
+                    break
+                }
+
+                final.innerHTML += ` O ${index}º voto foi no ${vt_votos[index - 1]} <br>`
+
+                vencedor.innerHTML = `O melhor jogador de 2022 segundo a enquete foi: <b>${maiorNome}</b>`
+
+            }
+        }
+
+    }
+
+
+    // GRAFICO
+    window.onload = obterDadosGrafico(1);
+
+    function obterDadosGrafico(idAquario) {
+        fetch('/medidas/ultimas/${idAquario}', { cache: "no-store" })
+            .then(function (response) {
+                if (response.status == 200) {
+                    response.json().then(function (resposta) {
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        plotarGrafico(resposta, idAquario);
+                    });
+                } else {
+                    console.error("Nenhum dado encontrado ou erro na API");
+                }
+            })
+            .catch(function (error) {
+                console.error(
+                    `Erro na obtenção dos dados p / gráfico: ${error.message}`
+                );
+            });
+    }
+
+    function plotarGrafico(resposta, idAquario) {
+        var dados = {
+            labels: [],
+            datasets: [
+                {
+                    label: "Votos",
+                    borderColor: "black",
+                    backgroundColor: "green",
+                    data: [],
+                },
+            ],
+        };
+
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.labels.push(registro.jogador);
+            dados.datasets[0].data.push(registro.contagem);
+        }
+
+        var ctx = canvas_grafico.getContext("2d");
+        window.grafico_linha = new Chart(ctx, {
+            type: "bar",
+            data: dados,
+            options: {
+                scales: {
+                    yAxes: [
+                        {
+                            ticks: {
+                                beginAtZero: true,
+                            },
+                        },
+                    ],
+                },
+            },
+        });
+
+    }
+
+</script>
