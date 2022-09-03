@@ -6,6 +6,16 @@
 create database grupo9;
 use grupo9;
 
+create table funcionario (
+idFuncionario int primary key auto_increment,
+funcionario varchar (45)
+);
+
+insert into funcionario values
+(null, 'Administrador'),
+(null, 'Usuário');
+select * from funcionario;
+
 create table usuario (
 id int primary key auto_increment,
 nome varchar (45),
@@ -19,15 +29,9 @@ foreign key (fkFuncionario) references funcionario (idFuncionario)
 
 select * from usuario;
 
-create table funcionario (
-idFuncionario int primary key auto_increment,
-funcionario varchar (45)
-);
 
-insert into funcionario values
-(null, 'Administrador'),
-(null, 'Usuário');
-select * from funcionario;
+
+
 
 
 
