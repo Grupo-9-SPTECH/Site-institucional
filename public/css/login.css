@@ -39,9 +39,10 @@
 }
 
 .box .left h2 {
-    font-size: 27px;
+    font-size: 29px;
     letter-spacing: 2px;
     text-transform: uppercase;
+    margin-bottom: 50px;
 }
 
 .box .left form {
@@ -62,7 +63,7 @@
 }
 
 .box .left form label input:hover {
-    border: 1px solid #4a6bda;
+    background-color: #c5c5c575
  }
 
 .box .left p {
@@ -158,3 +159,105 @@
     height: 50px;
     width: 50px;
   }
+
+/* @media screen and (max-width: 1330px) {
+    .right {
+        display: none;
+    }
+
+    .container {
+        width: 50%;
+    }
+
+    .left {
+        width: 100%;
+    }
+  } */
+
+/* @media screen and (max-width: 1064px) {
+    .container {
+        width: 90%;
+        height: auto;
+    }
+
+} */
+
+@media screen and (max-width: 800px){
+
+    .container {
+        background: url(../img/pexels-karolina-grabowska-4386467.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+
+    #right {
+        display: none;
+    }
+
+    #left {
+        width: 100%;
+    }
+
+    #box {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 650px){
+
+    .container {
+        background: url(../img/pexels-karolina-grabowska-4386467.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+
+    #right {
+        display: none;
+    }
+
+    #left {
+        width: 100%;
+    }
+
+    #box {
+        width: 80%;
+    }
+
+}
+
+@media screen and (min-width: 1368px){
+    #box{
+        width: 90%;
+    }
+
+    #left {
+        width: 65%;
+    }
+    
+    #right {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 1180px){
+    .container {
+        background: url(../img/pexels-karolina-grabowska-4386467.jpg);
+        background-position: center;
+        background-size: cover;
+    }
+
+    #right {
+        display: none;
+    }
+
+    #left {
+        width: 100%;
+    }
+
+    #box {
+        width: 80%;
+    }
+}
+
+

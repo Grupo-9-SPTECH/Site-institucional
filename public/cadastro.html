@@ -12,12 +12,12 @@
 </head>
 <body> 
     <div class="container">
-        <div class="box">
-            <div class="left">
+        <div class="box" id="box">
+            <div class="left" id="left">
 
                 <h2>Cadastro</h2>
                 
-                <form>
+                <form id="formCad">
 
                     
                     <label>
@@ -36,11 +36,25 @@
                         <input type="password" placeholder="Confirme a senha" id="senha_confirmacao_input">
                     </label>
                     <label>
-                        <select name="" id="func_input">Selecione a sua função:
+                        
+                        <!-- <select name="" id="func_input">Selecione a sua função:
                             <option value="-">-</option>
                             <option value="1">Administrador</option>
                             <option value="2">Usuário</option>
-                        </select>
+                        </select> -->
+                       
+                       <div class="form-options">
+                            <span style="font-size: 12.8px;">Tipo de cadastro: </span>
+                            <div class="radio-options">
+                                <label style="display: flex; align-items: center;">
+                                    <input type="radio" value="admin" style="margin-right: 0.35rem"><span>Admin</span>
+                                </label>
+                                <label style="display: flex; align-items: center;">
+                                    <input type="radio" value="normalUser" style="margin-right: 0.35rem"><span>Usuário</span>
+                                </label>
+                            </div>
+                       </div>
+
                     </label>
                     
                     
@@ -50,12 +64,14 @@
                 <p class="signup">Ja tem uma conta? <a href="login.html">Login</a></p> 
                 
             </div>
-            <div class="right">
-                <img src="img/pexels-anna-shvets-3786215.jpg" alt="">
+            <div class="right" id="right">
+                <!-- <img src="img/pexels-photo-3861969.jpg" alt=""> -->
             </div>
 
             <!-- ERRO -->
-            <div class="alerta_erro">
+
+            <!-- Style none colocado devido ao espaço que a div ocupava em tela -->
+            <div class="alerta_erro" style="display: none;">
                 <div class="card_erro" id="cardErro">
                     <span id="mensagem_erro"></span>
                 </div>
