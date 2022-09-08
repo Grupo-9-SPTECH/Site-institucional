@@ -551,6 +551,9 @@ body {
 .info p{
     height: 70%;
 }
+.info a{
+    color: white;
+}
 
 @media only screen and (min-width: 300px) {
     .footer .container{
@@ -570,6 +573,9 @@ body {
 
     .info p{
         font-size: 7px;
+    }
+    .info a{
+        color: white;
     }
 }
 
@@ -591,6 +597,9 @@ body {
     .info p{
         font-size: 12px;
     }
+    .info a{
+        color: white;
+    }
 }
 
 @media only screen and (min-width: 992px) {
@@ -610,5 +619,8 @@ body {
 
     .info p{
         font-size: 17px;
+    }
+    .info a{
+        color: white;
     }
 }
