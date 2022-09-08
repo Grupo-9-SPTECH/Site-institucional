@@ -17,6 +17,12 @@
 
 }
 
+.container i {
+    color: white;
+    font-size: 50px;
+    margin: 30px;
+}
+
 .container .box {
     position: absolute;
     top: 50%;
