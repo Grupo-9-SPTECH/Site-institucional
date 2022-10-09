@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="Dash.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="imgs/logo-tech-health-2.png">
+            </div>
+            <a href="index.html" class="active">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="perfil.html">
+                <span class="material-icons-sharp">person_outline</span>
+                <h3>Perfil</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp">receipt_long</span>
+                <h3>Pedidos</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">insights</span>
+                <h3>Analytics</h3>
+            </a> -->
+            <a href="#">
+                <span class="material-icons-sharp">mail_outline</span>
+                <h3>Mensagens</h3>
+                <span class="message-count">26</span>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp">inventory</span>
+                <h3>Produtos</h3>
+            </a> -->
+            <a href="#">
+                <span class="material-icons-sharp">report_gmailerrorred</span>
+                <h3>Relato</h3>
+            </a>
+            <a href="#">
+                <span class="material-icons-sharp">settings</span>
+                <h3>Configurações</h3>
+            </a>
+            <!-- <a href="#">
+                <span class="material-icons-sharp">add</span>
+                <h3>Add Produto</h3>
+            </a> -->
+            <a href="#">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+        </div>
+        <div class="content">
+            <div class="top-menu">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Olá, <b>Dillan</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="imgs/profile-1.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="view">
+                <div class="painel">
+                    <button class="btn" onclick="m1()">MQ.01</button>
+                    <button class="btn"  onclick="m2()">MQ.02</button>
+                    <button class="btn"  onclick="m3()">MQ.03</button>
+                    <button class="btn"  onclick="m4()">MQ.04</button>
+                </div>
+            </div>
+            <div class="painel2">
+                <div class="subdiv">
+                    <div class="card">
+                        <canvas id="myChart1"></canvas>
+                    </div>
+                    <div class="card">
+                        <canvas id="myChart2"></canvas>
+                    </div>
+                </div>
+
+                <div class="subdiv">
+                    <div class="card">
+                        <canvas id="myChart3"></canvas>
+                    </div>
+                    <div class="card">
+                        <canvas id="myChart4"></canvas>
+                    </div>
+                </div>
+                <br><br><br>
+
+            </div>
+
+        </div>
+    </div>
+
+    <script src="escopo.js"></script>
+</body>
+
+</html>
+
+<script>
+    const labels = [
+        '7h',
+        '8h',
+        '9h',
+        '10h',
+        '11h',
+        '12h',
+    ];
+
+    const data = {
+        labels: labels,
+        datasets: [{
+            label: 'CPU',
+            backgroundColor: '#23A8C6',
+            borderColor: '#23A8C6',
+            data: [20, 30, 35, 30, 30, 2],
+        }]
+    };
+
+    const config = {
+        type: 'line',
+        data: data,
+        options: {}
+    };
+
+    // ___________________________________Chart 2_____________________________________
+    const labels2 = [
+        '7h',
+        '8h',
+        '9h',
+        '10h',
+        '11h',
+        '12h',
+    ];
+
+    const data2 = {
+        labels: labels2,
+        datasets: [{
+            label: 'Processador',
+            backgroundColor: '#23A8C6',
+            borderColor: '#23A8C6',
+            data: [30, 42, 74, 42, 24, 42],
+        }]
+    };
+
+    const config2 = {
+        type: 'line',
+        data: data2,
+        options: {}
+    };
+
+    // ___________________________________Chart 3_____________________________________
+    const labels3 = [
+        '7h',
+        '8h',
+        '9h',
+        '10h',
+        '11h',
+        '12h',
+    ];
+
+    const data3 = {
+        labels: labels3,
+        datasets: [{
+            label: 'Disco',
+            backgroundColor: '#23A8C6',
+            borderColor: '#23A8C6',
+            data: [30, 50, 35, 20, 0, 2],
+        }]
+    };
+
+    const config3 = {
+        type: 'line',
+        data: data3,
+        options: {}
+    };
+    
+    // ___________________________________Chart 4_____________________________________
+    const labels4 = [
+        '7h',
+        '8h',
+        '9h',
+        '10h',
+        '11h',
+        '12h',
+    ];
+
+    const data4 = {
+        labels: labels4,
+        datasets: [{
+            label: 'Memória',
+            backgroundColor: '#23A8C6',
+            borderColor: '#23A8C6',
+            data: [50, 20, 20, 20, 20, 2],
+        }]
+    };
+
+    const config4 = {
+        type: 'line',
+        data: data4,
+        options: {}
+    };
+</script>
+
+<script>
+    const myChart = new Chart(
+        document.getElementById('myChart1'),
+        config
+    );
+
+    const myChart2 = new Chart(
+        document.getElementById('myChart2'),
+        config2
+    );
+
+    const myChart3 = new Chart(
+        document.getElementById('myChart3'),
+        config3
+    );
+
+    const myChart4 = new Chart(
+        document.getElementById('myChart4'),
+        config4
+    );
+</script>
+
+<script>
+function m1() {
+        data.datasets[0].data = [20, 30, 35, 30, 30, 2];
+        myChart.update();
+
+        data2.datasets[0].data = [30, 42, 74, 42, 24, 42];
+        myChart2.update();
+
+        data3.datasets[0].data = [30, 50, 35, 20, 0, 2];
+        myChart3.update();
+
+        data4.datasets[0].data = [50, 20, 20, 20, 20, 2];
+        myChart4.update();
+    }
+
+    function m2() {
+        data.datasets[0].data = [50, 60, 35, 20, 20, 2];
+        myChart.update();
+
+        data2.datasets[0].data = [80, 52, 72, 12, 2, 2];
+        myChart2.update();
+
+        data3.datasets[0].data = [10, 20, 30, 2, 50, 2];
+        myChart3.update();
+
+        data4.datasets[0].data = [100, 2, 2, 2, 2, 2];
+        myChart4.update();
+    }
+
+    function m3() {
+        data.datasets[0].data = [90, 0, 90, 90, 100, 50];
+        myChart.update();
+
+        data2.datasets[0].data = [80, 20, 20, 13, 20, 12];
+        myChart2.update();
+
+        data3.datasets[0].data = [100, 25, 35, 5, 50, 29];
+        myChart3.update();
+
+        data4.datasets[0].data = [0, 0, 0, 2, 2, 2];
+        myChart4.update();
+    }
+
+    function m4() {
+        data.datasets[0].data = [0, 60, 0, 0, 20, 0];
+        myChart.update();
+
+        data2.datasets[0].data = [10, 10, 72, 12, 10, 2];
+        myChart2.update();
+
+        data3.datasets[0].data = [10, 20, 30, 2, 50, 2];
+        myChart3.update();
+
+        data4.datasets[0].data = [100, 2, 2, 2, 2, 2];
+        myChart4.update();
+    }
+</script>
+
