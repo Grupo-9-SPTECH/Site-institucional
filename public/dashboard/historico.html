@@ -6,25 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/perfil.css">
+    <link rel="stylesheet" href="teste.css">
+    <link rel="stylesheet" href="../css/historico.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
-            <div class="close" id="close-btn">
-                <span class="material-icons-sharp">
-                    close
-                </span>
-            </div>
             <div class="logo">
                 <img src="imgs/logo-tech-health-2.png">
             </div>
-            <a href="index.html">
+            <a href="index.html" >
                 <span class="material-icons-sharp">grid_view</span>
                 <h3>Dashboard</h3>
             </a>
-            <a href="perfil.html"  class="active"   >
+            <a href="escopo.html">
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Perfil</h3>
             </a>
@@ -45,9 +41,9 @@
                 <span class="material-icons-sharp">inventory</span>
                 <h3>Produtos</h3>
             </a> -->
-            <a href="#">
+            <a href="#" class="active">
                 <span class="material-icons-sharp">report_gmailerrorred</span>
-                <h3>Relato</h3>
+                <h3>Históricos</h3>
             </a>
             <a href="#">
                 <span class="material-icons-sharp">settings</span>
@@ -81,38 +77,63 @@
                     </div>
                 </div>
             </div>
-            <div class="view">
-                <h1>Perfil</h1>
-                <div class="user-box">
-                    <div class="left">
-                        <div class="user-item">
-                            <h3>Nome: </h3>
-                            <span>Fulano da Silva</span>
-                        </div>
-                        <div class="user-item">
-                            <h3>Email: </h3>
-                            <span>fulano@gmail.com</span>
-                        </div>
-                        <div class="user-item">
-                            <h3>Hospital: </h3>
-                            <span>Unimed Barra Funda</span>
-                        </div>
-                        <div class="user-item">
-                            <h3>Tipo de usuário: </h3>
-                            <span>Admin</span>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <div class="user-img">
-                            <img src="imgs/profile-3.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="box-historico">
+                <h2>Histórico</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Máquina</th>
+                            <th>Hospital</th>
+                            <th>Problema</th>
+                            <th>Data</th>
+                            <th>Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>02</td>
+                            <td>Hospital Unimed Brás</td>
+                            <td>Sobrecarga mem. RAM</td>
+                            <td class="warning">02/10/2022</td>
+                            <td class="primary">10:33</td>
+                        </tr>
+                        <tr>
+                            <td>05</td>
+                            <td>Hospital Cleriston Andrade</td>
+                            <td>CPU sobrecarregada</td>
+                            <td class="warning">01/10/2022</td>
+                            <td class="primary">10:33</td>
+                        </tr>
+                        <tr>
+                            <td>01</td>
+                            <td>Hospital Santos Dummont</td>
+                            <td>Tela azul</td>
+                            <td class="warning">01/10/2022</td>
+                            <td class="primary">10:33</td>
+                        </tr>
+                        <tr>
+                            <td>031</td>
+                            <td>Hospital Albert Einstein</td>
+                            <td>Sobrecarga mem. RAM</td>
+                            <td class="warning">02/10/2022</td>
+                            <td class="primary">10:33</td>
+                        </tr>
+                        <tr>
+                            <td>04</td>
+                            <td>Hospital Santa Catarina</td>
+                            <td>Sobrecarga mem. RAM</td>
+                            <td class="warning">02/10/2022</td>
+                            <td class="primary">10:33</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="#">Show All</a>
             </div>
 
         </div>
     </div>
 
-    <script src="../js/perfil.js"></script>
+    <script src="escopo.js"></script>
 </body>
 </html>
