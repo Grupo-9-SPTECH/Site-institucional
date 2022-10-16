@@ -6,21 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="teste.css">
     <link rel="stylesheet" href="../css/historico.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
 <body>
     <div class="container">
         <div class="sidebar">
+            <div class="close" id="close-btn">
+                <span class="material-icons-sharp">
+                    close
+                </span>
+            </div>
             <div class="logo">
                 <img src="imgs/logo-tech-health-2.png">
             </div>
-            <a href="index.html" >
+            <a href="#"  class="active">
                 <span class="material-icons-sharp">grid_view</span>
                 <h3>Dashboard</h3>
             </a>
-            <a href="escopo.html">
+            <a href="perfil.html">
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Perfil</h3>
             </a>
@@ -41,9 +45,9 @@
                 <span class="material-icons-sharp">inventory</span>
                 <h3>Produtos</h3>
             </a> -->
-            <a href="#" class="active">
+            <a href="historico.html">
                 <span class="material-icons-sharp">report_gmailerrorred</span>
-                <h3>Históricos</h3>
+                <h3>Relato</h3>
             </a>
             <a href="#">
                 <span class="material-icons-sharp">settings</span>
@@ -77,63 +81,66 @@
                     </div>
                 </div>
             </div>
-            
-            <div class="box-historico">
-                <h2>Histórico</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Máquina</th>
-                            <th>Hospital</th>
-                            <th>Problema</th>
-                            <th>Data</th>
-                            <th>Hora</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>02</td>
-                            <td>Hospital Unimed Brás</td>
-                            <td>Sobrecarga mem. RAM</td>
-                            <td class="warning">02/10/2022</td>
-                            <td class="primary">10:33</td>
-                        </tr>
-                        <tr>
-                            <td>05</td>
-                            <td>Hospital Cleriston Andrade</td>
-                            <td>CPU sobrecarregada</td>
-                            <td class="warning">01/10/2022</td>
-                            <td class="primary">10:33</td>
-                        </tr>
-                        <tr>
-                            <td>01</td>
-                            <td>Hospital Santos Dummont</td>
-                            <td>Tela azul</td>
-                            <td class="warning">01/10/2022</td>
-                            <td class="primary">10:33</td>
-                        </tr>
-                        <tr>
-                            <td>031</td>
-                            <td>Hospital Albert Einstein</td>
-                            <td>Sobrecarga mem. RAM</td>
-                            <td class="warning">02/10/2022</td>
-                            <td class="primary">10:33</td>
-                        </tr>
-                        <tr>
-                            <td>04</td>
-                            <td>Hospital Santa Catarina</td>
-                            <td>Sobrecarga mem. RAM</td>
-                            <td class="warning">02/10/2022</td>
-                            <td class="primary">10:33</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <a href="#">Show All</a>
+            <div class="view">
+                <h1>Histórico</h1>
+                <div class="box-historico">
+                    <h2>Histórico</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Máquina</th>
+                                <th>Hospital</th>
+                                <th>Problema</th>
+                                <th>Data</th>
+                                <th>Hora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>02</td>
+                                <td>Hospital Unimed Brás</td>
+                                <td>Sobrecarga mem. RAM</td>
+                                <td class="warning">02/10/2022</td>
+                                <td class="primary">10:33</td>
+                            </tr>
+                            <tr>
+                                <td>05</td>
+                                <td>Hospital Cleriston Andrade</td>
+                                <td>CPU sobrecarregada</td>
+                                <td class="warning">01/10/2022</td>
+                                <td class="primary">10:33</td>
+                            </tr>
+                            <tr>
+                                <td>01</td>
+                                <td>Hospital Santos Dummont</td>
+                                <td>Tela azul</td>
+                                <td class="warning">01/10/2022</td>
+                                <td class="primary">10:33</td>
+                            </tr>
+                            <tr>
+                                <td>031</td>
+                                <td>Hospital Albert Einstein</td>
+                                <td>Sobrecarga mem. RAM</td>
+                                <td class="warning">02/10/2022</td>
+                                <td class="primary">10:33</td>
+                            </tr>
+                            <tr>
+                                <td>04</td>
+                                <td>Hospital Santa Catarina</td>
+                                <td>Sobrecarga mem. RAM</td>
+                                <td class="warning">02/10/2022</td>
+                                <td class="primary">10:33</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a href="#">Mostrar mais</a>
+                </div>
+                
             </div>
 
         </div>
     </div>
 
-    <script src="escopo.js"></script>
+    <script src="../js/perfil.js"></script>
 </body>
 </html>

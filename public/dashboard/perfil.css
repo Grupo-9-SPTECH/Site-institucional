@@ -62,10 +62,14 @@
     transition: all 300ms ease;
 }
 
-.box-perfil .esquera {
+.box-perfil .esquerda {
     display: flex;
     flex-direction: column;
 }
 
 .box-perfil .campo {
+}
+
+.content .view .box-historico {
+    background-color: purple;
 }
