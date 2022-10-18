@@ -248,6 +248,7 @@ b {
     justify-content: end;
     gap: 2rem;
     border-radius: var(--border-radius-2);
+    
 }
 
 .content .top-menu button {
