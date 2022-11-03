@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
 
-<body>
+<body onload="listargenero()">
     <div class="container">
         <div class="sidebar">
             <div class="logo">
@@ -99,6 +99,8 @@
 </html>
 
 <script>
+
+    var mauqina
     const labels = [
         '7h',
         '8h',
@@ -238,6 +240,8 @@
 
         data4.datasets[0].data = [50, 20, 20, 20, 20, 2];
         myChart4.update();
+
+
     }
 
     function m2() {
