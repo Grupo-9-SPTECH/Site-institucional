@@ -22,6 +22,7 @@ function entrar() {
                 sessionStorage.LOGIN_USUARIO = json.login;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
+                sessionStorage.HOSPITAL_USUARIO = json.permissao;
 
                 setTimeout(function () {
                     window.location = "/index.html";
@@ -51,6 +52,7 @@ function validarSessao() {
 
     var login = sessionStorage.LOGIN_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
+
 
     var h1Titulo = document.getElementById("h1_titulo");
 

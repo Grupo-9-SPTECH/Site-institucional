@@ -100,7 +100,7 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
         var confirmacaoSenhaVar = senha_confirmacao_input.value;
-        // var funcVar = func_input.value;
+        var funcVar = func_input.value;
 
         if (nomeVar == "" || emailVar == "" || cnpjVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
             cardErro.style.display = "block"
@@ -146,7 +146,7 @@
                 cnpjServer: cnpjVar,
                 emailServer: emailVar,
                 senhaServer: senhaVar,
-                // funcServer: funcVar
+                funcServer: funcVar
             })
         }).then(function (resposta) {
 

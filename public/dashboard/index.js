@@ -4,7 +4,6 @@ const closeBtn = document.querySelector("#close-btn");
 const themeToggler = document.querySelector(".theme-toggler");
 
 var userName = document.getElementById("userName");
-
 userName.innerHTML = sessionStorage.NOME_USUARIO;
 
 menuBtn.addEventListener('click', () => {
