@@ -6,14 +6,19 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
         instrucaoSql = `select top ${limite_linhas}
-        `;
-    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select top ${limite_linhas}
-        idMaquina, fkMaquina, percent_Memoria_Em_Uso, uso_Cpu_Processo, uso_Processador,
+        ${idMaquina}, fkMaquina, percent_Memoria_Em_Uso, uso_Cpu_Processo, uso_Processador,
         uso_Ram_Processo, percent_Uso_Disco from
         [dbo].[medida] join [dbo].[maquina] on
         [dbo].[medida].fkMaquina = ${idMaquina}`;
-    } else {
+
+    } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
+        instrucaoSql = `select top ${limite_linhas}
+        ${idMaquina}, fkMaquina, percent_Memoria_Em_Uso, uso_Cpu_Processo, uso_Processador,
+        uso_Ram_Processo, percent_Uso_Disco from
+        [dbo].[medida] join [dbo].[maquina] on
+        [dbo].[medida].fkMaquina = ${idMaquina}`;
+
+    } else { 
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
     }
@@ -22,27 +27,23 @@ function buscarUltimasMedidas(idMaquina, limite_linhas) {
     return database.executar(instrucaoSql);
 }
 
-function buscarMedidasEmTempoReal(idAquario) {
+function buscarMedidasEmTempoReal(idMaquina) {
 
     instrucaoSql = ''
 
-    if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select top 1
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,  
-                        CONVERT(varchar, momento, 108) as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc`;
+if (process.env.AMBIENTE_PROCESSO == "producao") {
+        instrucaoSql = `select top ${limite_linhas}
+        ${idMaquina}, fkMaquina, percent_Memoria_Em_Uso, uso_Cpu_Processo, uso_Processador,
+        uso_Ram_Processo, percent_Uso_Disco from
+        [dbo].[medida] join [dbo].[maquina] on
+        [dbo].[medida].fkMaquina = ${idMaquina}`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
-        instrucaoSql = `select 
-        dht11_temperatura as temperatura, 
-        dht11_umidade as umidade,
-                        DATE_FORMAT(momento,'%H:%i:%s') as momento_grafico, 
-                        fk_aquario 
-                        from medida where fk_aquario = ${idAquario} 
-                    order by id desc limit 1`;
+        instrucaoSql = `select top ${limite_linhas}
+        ${idMaquina}, fkMaquina, percent_Memoria_Em_Uso, uso_Cpu_Processo, uso_Processador,
+        uso_Ram_Processo, percent_Uso_Disco from
+        [dbo].[medida] join [dbo].[maquina] on
+        [dbo].[medida].fkMaquina = ${idMaquina}`;
     } else {
         console.log("\nO AMBIENTE (produção OU desenvolvimento) NÃO FOI DEFINIDO EM app.js\n");
         return
