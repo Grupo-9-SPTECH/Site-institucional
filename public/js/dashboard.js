@@ -11,9 +11,9 @@ menuBtn.addEventListener('click', () => {
 })
 
 
-closeBtn.addEventListener('click', () =>{
-    sideMenu.style.display = 'none';
-})
+// closeBtn.addEventListener('click', () =>{
+//     sideMenu.style.display = 'none';
+// })
 
 themeToggler.addEventListener('click', () => {
     console.log("apertou!!");
