@@ -65,10 +65,10 @@
             </div>
             <div class="view">
                 <div class="painel">
-                    <button class="btn" onclick="obterDadosGrafico(1)">Maq. 01</button>
-                    <button class="btn" onclick="obterDadosGrafico(2)">Maq. 02</button>
+                    <button class="btn" onclick="obterDadosGrafico(1)">Maquina</button>
+                    <!-- <button class="btn" onclick="obterDadosGrafico(2)">Maq. 02</button>
                     <button class="btn" onclick="obterDadosGrafico(3)">Maq. 03</button>
-                    <button class="btn" onclick="obterDadosGrafico(4)">Maq. 04</button>
+                    <button class="btn" onclick="obterDadosGrafico(4)">Maq. 04</button> -->
                 </div>
                 <div class="painel2">
                     <div class="subdiv">
@@ -267,7 +267,7 @@
             }]
         };
 
-        //grafico2
+        //grafico3
         let dados3 = {
             labels: [],
             datasets: [{
@@ -482,7 +482,18 @@
                         dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
                         dados.datasets[0].data.shift();  // apagar o primeiro de cpu
                         dados.datasets[0].data.push(novoRegistro[0].uso_Cpu_Processo); // incluir uma nova medida de cpu
-                    
+                        
+                        
+                        if(novoRegistro[0].percent_Memoria_Em_Uso >= 90.0){
+                            dados2.datasets[0].backgroundColor = '#ff0000'; //red
+                        }
+                        if(novoRegistro[0].percent_Memoria_Em_Uso < 90.0 && novoRegistro[0].percent_Memoria_Em_Uso >= 70.0){
+                            dados2.datasets[0].backgroundColor = '#ffff00'; //amarelo
+                        }
+                        if(novoRegistro[0].percent_Memoria_Em_Uso < 70.0){
+                            dados2.datasets[0].backgroundColor = '	#008000'; //verde
+                        }
+                        
 
                         //grafico 2
                         dados2.labels.shift(); // apagar o primeiro

@@ -623,3 +623,43 @@ b {
 
 
 }
+
+
+/* ALERTAS!!!!!! */
+.cor-alerta {
+    width: 5vw;
+    height: 35vh;
+    align-items: center;
+    border-radius: 1vh;
+    margin-top: 1vh;
+     
+  }
+
+  .perigo-critico{
+      background-color: rgb(128, 0, 0);
+  }
+
+  .alerta-emergencia{
+      background-color: rgb(255, 136, 0);
+  }
+
+  .alerta-alerta{
+      background-color: rgb(205, 199, 33);
+  }
+
+  .alerta-ideal{
+      background-color: rgb(41, 230, 44);
+  }
+
+  .alerta-alerta_vazio{
+    background-color:rgb(94, 128, 172);
+  }
+
+  .alerta-emergencia_vazio{
+      background-color: rgb(55, 94, 237);
+
+  }
+  .alerta-vazio{
+    background-color:rgb(0, 0, 102) ;
+
+}
