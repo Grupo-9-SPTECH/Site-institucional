@@ -5,39 +5,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DashBoard | Tech Health</title>
 
     <link rel="stylesheet" href="Dash.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="./js/funcoes.js"></script> -->
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
 
-<body>
+<body onload="atualizacaoPeriodica(), validarSessao()">
     <div class="container">
         <div class="sidebar">
-                <div class="logo">
-                    <img src="imgs/logo-tech-health-2.png" alt="">
-                </div>
-                <a href="#" >
-                    <span class="material-icons-sharp">home</span>
-                    <h3>Início</h3>
-                </a>
-                <a href="perfil.html">
-                    <span class="material-icons-sharp">person_outline</span>
-                    <h3>Perfil</h3>
-                </a>
-                <a href="paginaDash.html" class="active">
-                    <span class="material-icons-sharp">grid_view</span>
-                    <h3>Dashboard</h3>
-                </a>
-                <a href="perfil.html">
-                    <span class="material-icons-sharp">person_outline</span>
-                    <h3>Perfil</h3>
-                </a>
-                <a href="index.html">
-                    <span class="material-icons-sharp">computer</span>
-                    <h3>Máquinas</h3>
-                </a>
+            <div class="logo">
+                <img src="imgs/logo-tech-health-2.png">
+            </div>
+            <a href="index.html">
+                <span class="material-icons-sharp">home</span>
+                <h3>Início</h3>
+            </a>
+            <a href="paginaDash.html" class="active">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="perfil.html">
+                <span class="material-icons-sharp">person_outline</span>
+                <h3>Perfil</h3>
+            </a>
+            <a href="historico.html">
+                <span class="material-icons-sharp">report_gmailerrorred</span>
+                <h3>Histórico</h3>
+            </a>
             <a href="../login.html">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Logout</h3>
@@ -54,7 +55,7 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Olá, <b  id="userName">Dillan</b></p>
+                        <p>Olá, <b id="userName">Dillan</b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <!-- <div class="profile-photo">
@@ -64,10 +65,10 @@
             </div>
             <div class="view">
                 <div class="painel">
-                    <button class="btn" onclick="m1()">Maq. 01</button>
-                    <button class="btn"  onclick="m2()">Maq. 02</button>
-                    <button class="btn"  onclick="m3()">Maq. 03</button>
-                    <button class="btn"  onclick="m4()">Maq. 04</button>
+                    <button class="btn" onclick="obterDadosGrafico(1)">Maquina</button>
+                    <!-- <button class="btn" onclick="obterDadosGrafico(2)">Maq. 02</button>
+                    <button class="btn" onclick="obterDadosGrafico(3)">Maq. 03</button>
+                    <button class="btn" onclick="obterDadosGrafico(4)">Maq. 04</button> -->
                 </div>
                 <div class="painel2">
                     <div class="subdiv">
@@ -88,21 +89,21 @@
                         </div>
                     </div>
                     <br><br><br>
-    
+
                 </div>
             </div>
-            
+
 
         </div>
     </div>
 
     <script src="../js/dashboard.js"></script>
-    
+
 </body>
 
 </html>
 
-<script>
+<!-- <script>
     const labels = [
         '7h',
         '8h',
@@ -111,7 +112,6 @@
         '11h',
         '12h',
     ];
-
     const data = {
         labels: labels,
         datasets: [{
@@ -121,13 +121,11 @@
             data: [20, 30, 35, 30, 30, 2],
         }]
     };
-
     const config = {
         type: 'line',
         data: data,
         options: {}
     };
-
     // ___________________________________Chart 2_____________________________________
     const labels2 = [
         '7h',
@@ -137,7 +135,6 @@
         '11h',
         '12h',
     ];
-
     const data2 = {
         labels: labels2,
         datasets: [{
@@ -147,143 +144,386 @@
             data: [30, 42, 74, 42, 24, 42],
         }]
     };
-
     const config2 = {
         type: 'line',
         data: data2,
         options: {}
     };
+</script> -->
 
-    // ___________________________________Chart 3_____________________________________
-    const labels3 = [
-        '7h',
-        '8h',
-        '9h',
-        '10h',
-        '11h',
-        '12h',
-    ];
-
-    const data3 = {
-        labels: labels3,
-        datasets: [{
-            label: 'Disco',
-            backgroundColor: '#23A8C6',
-            borderColor: '#23A8C6',
-            data: [30, 50, 35, 20, 0, 2],
-        }]
-    };
-
-    const config3 = {
-        type: 'line',
-        data: data3,
-        options: {}
-    };
-    
-    // ___________________________________Chart 4_____________________________________
-    const labels4 = [
-        '7h',
-        '8h',
-        '9h',
-        '10h',
-        '11h',
-        '12h',
-    ];
-
-    const data4 = {
-        labels: labels4,
-        datasets: [{
-            label: 'Memória',
-            backgroundColor: '#23A8C6',
-            borderColor: '#23A8C6',
-            data: [50, 20, 20, 20, 20, 2],
-        }]
-    };
-
-    const config4 = {
-        type: 'line',
-        data: data4,
-        options: {}
-    };
-</script>
-
-<script>
+<!-- <script>
     const myChart = new Chart(
         document.getElementById('myChart1'),
         config
     );
+</script> -->
 
-    const myChart2 = new Chart(
-        document.getElementById('myChart2'),
-        config2
-    );
-
-    const myChart3 = new Chart(
-        document.getElementById('myChart3'),
-        config3
-    );
-
-    const myChart4 = new Chart(
-        document.getElementById('myChart4'),
-        config4
-    );
-</script>
-
-<script>
+<!-- <script>
     function m1() {
         data.datasets[0].data = [20, 30, 35, 30, 30, 2];
         myChart.update();
-
         data2.datasets[0].data = [30, 42, 74, 42, 24, 42];
         myChart2.update();
-
         data3.datasets[0].data = [30, 50, 35, 20, 0, 2];
         myChart3.update();
-
         data4.datasets[0].data = [50, 20, 20, 20, 20, 2];
         myChart4.update();
+</script> -->
+
+<script>
+    let proximaAtualizacao;
+
+    window.onload = obterDadosGrafico(1);
+
+   // verificar_autenticacao();
+
+    // function alterarTitulo(idMaquina) {
+    //     var tituloMaquina = document.getElementById("tituloMaquina")
+    //     tituloMaquina.innerHTML = "Últimas medidas de Temperatura e Umidade do <span style='color: #e6005a'>Aquário " + idMaquina + "</span>"
+    // }
+
+    // O gráfico é construído com três funções:
+    // 1. obterDadosGrafico -> Traz dados do Banco de Dados para montar o gráfico da primeira vez
+    // 2. plotarGrafico -> Monta o gráfico com os dados trazidos e exibe em tela
+    // 3. atualizarGrafico -> Atualiza o gráfico, trazendo novamente dados do Banco
+
+    // Esta função *obterDadosGrafico* busca os últimos dados inseridos em tabela de medidas.
+    // para, quando carregar o gráfico da primeira vez, já trazer com vários dados.
+    // A função *obterDadosGrafico* também invoca a função *plotarGrafico*
+
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function obterDadosGrafico(idMaquina) {
+        // alterarTitulo(idMaquina)
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idMaquina);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
     }
 
-    function m2() {
-        data.datasets[0].data = [50, 60, 35, 20, 20, 2];
-        myChart.update();
+    // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
+    // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
+    // A função *plotarGrafico* também invoca a função *atualizarGrafico*
+    function plotarGrafico(resposta, idMaquina) {
+        console.log('iniciando plotagem do gráfico...');
 
-        data2.datasets[0].data = [80, 52, 72, 12, 2, 2];
-        myChart2.update();
+        // Criando estrutura para plotar gráfico - labels
+        //let labels = [];
 
-        data3.datasets[0].data = [10, 20, 30, 2, 50, 2];
-        myChart3.update();
+        // Criando estrutura para plotar gráfico - dados
 
-        data4.datasets[0].data = [100, 2, 2, 2, 2, 2];
-        myChart4.update();
+        //grafico1
+        let dados = {
+            labels: [],
+            datasets: [{
+                data: [],
+                fill: true,
+                yAxisID: 'y-cpu',
+                label: 'CPU',
+                backgroundColor: '#0000FF',
+                borderColor: '#000000'
+                //tension: 1
+            }]
+        };
+
+        //grafico2
+        let dados2 = {
+            labels: [],
+            datasets: [{
+                data: [],
+                fill: true,
+                yAxisID: 'y-memoria',
+                label: 'Memoria',
+                backgroundColor: '#00BFFF',
+                borderColor: '#0000FF'
+                //tension: 0.1
+            }]
+        };
+
+        //grafico3
+        let dados3 = {
+            labels: [],
+            datasets: [{
+                data: [],
+                fill: true,
+                yAxisID: 'y-disco',
+                label: 'Disco',
+                backgroundColor: '#23A8C6',
+                borderColor: '#000000'
+                //tension: 0.1
+            }]
+        };
+
+        //grafico2
+        let dados4 = {
+            labels: [],
+            datasets: [{
+                data: [],
+                fill: true,
+                yAxisID: 'y-processador',
+                label: 'Processador',
+                backgroundColor: '#00BFFF',
+                borderColor: '#23A8C6'
+                //tension: 0.1
+            }]
+        };
+
+        //entender c samuel
+        console.log('----------------------------------------------')
+        console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+        console.log(dados)
+
+        // Inserindo valores recebidos em estrutura para plotar o gráfico
+        for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            dados.labels.push(registro.momento_grafico);
+            dados2.labels.push(registro.momento_grafico);
+            dados3.labels.push(registro.momento_grafico);
+            dados4.labels.push(registro.momento_grafico);
+            //labels.push(registro.momento_grafico);
+
+            dados.datasets[0].data.push(registro.uso_Cpu_Processo);
+            dados2.datasets[0].data.push(registro.percent_Memoria_Em_Uso);
+            dados3.datasets[0].data.push(registro.percent_Uso_Disco);
+            dados4.datasets[0].data.push(registro.uso_Processador);
+
+        }
+
+        //entender c samuel
+        console.log('----------------------------------------------')
+        console.log('O gráfico será plotado com os respectivos valores:')
+        console.log('Labels:')
+        console.log(dados)
+        console.log('Dados:')
+        console.log(dados.datasets)
+        console.log('----------------------------------------------')
+
+        //grafico 1
+        var ctx = myChart1.getContext('2d');
+        window.grafico_linha1 = Chart.Line(ctx, {
+            data: dados,
+            options: {
+                responsive: true,
+                animation: { duration: 500 },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'CPU ao vivo'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-cpu',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+
+        //grafico 2
+        var ctx2 = myChart2.getContext('2d');
+        window.grafico_linha2 = Chart.Line(ctx2, {
+            data: dados2,
+            options: {
+                responsive: true,
+                animation: { duration: 500 },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Memoria ao vivo'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-memoria',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+
+         //grafico 3
+         var ctx3 = myChart3.getContext('2d');
+        window.grafico_linha3 = Chart.Line(ctx3, {
+            data: dados3,
+            options: {
+                responsive: true,
+                animation: { duration: 500 },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Disco ao vivo'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-disco',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+
+         //grafico 4
+        var ctx4 = myChart4.getContext('2d');
+        window.grafico_linha4 = Chart.Line(ctx4, {
+            data: dados4,
+            options: {
+                responsive: true,
+                animation: { duration: 500 },
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Processador ao vivo'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        id: 'y-processador',
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }],
+                }
+            }
+        });
+
+        // Criando estrutura para plotar gráfico - config
+        // const config = {
+        //     type: 'line',
+        //     data: dados,
+        // };
+
+        // Adicionando gráfico criado em div na tela
+        // let myChart = new Chart(
+        //     document.getElementById('myChart1'),
+        //     config
+        // );
+
+        setTimeout(() => atualizarGrafico(idMaquina, dados, dados2, dados3, dados4, myChart1, myChart2, myChart3, myChart4), 2000);
+
+
     }
+    // Esta função *atualizarGrafico* atualiza o gráfico que foi renderizado na página,
+    // buscando a última medida inserida em tabela contendo as capturas, 
 
-    function m3() {
-        data.datasets[0].data = [90, 0, 90, 90, 100, 50];
-        myChart.update();
+    //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
+    //     Para ajustar o "select", ajuste o comando sql em src/models
+    function atualizarGrafico(idMaquina, dados, dados2, dados3, dados4, myChart1, myChart2, myChart3, myChart4) {
 
-        data2.datasets[0].data = [80, 20, 20, 13, 20, 12];
-        myChart2.update();
+        fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
 
-        data3.datasets[0].data = [100, 25, 35, 5, 50, 29];
-        myChart3.update();
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico: ${dados}`);
+                    //console.log(dados);
 
-        data4.datasets[0].data = [0, 0, 0, 2, 2, 2];
-        myChart4.update();
-    }
+                   // document.getElementById("avisoCaptura").innerHTML = ""
 
-    function m4() {
-        data.datasets[0].data = [0, 60, 0, 0, 20, 0];
-        myChart.update();
+                    //if (novoRegistro[0].momento_grafico == dados.labels[dados.labels.length - 1]) {
+                        // console.log("---------------------------------------------------------------")
+                        // console.log("Como não há dados novos para captura, o gráfico não atualizará.")
+                        // document.getElementById("avisoCaptura").innerHTML = "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará."
+                        // console.log("Horário do novo dado capturado:")
+                        // console.log(novoRegistro[0].momento_grafico)
+                        // console.log("Horário do último dado capturado:")
+                        // console.log(dados.labels[dados.labels.length - 1])
+                        // console.log("---------------------------------------------------------------")
+                    //} else {
 
-        data2.datasets[0].data = [10, 10, 72, 12, 10, 2];
-        myChart2.update();
+                        // tirando e colocando valores no gráfico
+                        dados.labels.shift(); // apagar o primeiro
+                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        dados.datasets[0].data.shift();  // apagar o primeiro de cpu
+                        dados.datasets[0].data.push(novoRegistro[0].uso_Cpu_Processo); // incluir uma nova medida de cpu
+                        
+                        
+                        if(novoRegistro[0].percent_Memoria_Em_Uso >= 90.0){
+                            dados2.datasets[0].backgroundColor = '#ff0000'; //red
+                        }
+                        if(novoRegistro[0].percent_Memoria_Em_Uso < 90.0 && novoRegistro[0].percent_Memoria_Em_Uso >= 70.0){
+                            dados2.datasets[0].backgroundColor = '#ffff00'; //amarelo
+                        }
+                        if(novoRegistro[0].percent_Memoria_Em_Uso < 70.0){
+                            dados2.datasets[0].backgroundColor = '	#008000'; //verde
+                        }
+                        
 
-        data3.datasets[0].data = [10, 20, 30, 2, 50, 2];
-        myChart3.update();
+                        //grafico 2
+                        dados2.labels.shift(); // apagar o primeiro
+                        dados2.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        dados2.datasets[0].data.shift();  // apagar o primeiro de memoria
+                        dados2.datasets[0].data.push(novoRegistro[0].percent_Memoria_Em_Uso); // incluir uma nova medida de memoria
 
-        data4.datasets[0].data = [100, 2, 2, 2, 2, 2];
-        myChart4.update();
+                        //grafico 3
+                        dados3.labels.shift(); // apagar o primeiro
+                        dados3.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        dados3.datasets[0].data.shift();  // apagar o primeiro de memoria
+                        dados3.datasets[0].data.push(novoRegistro[0].percent_Uso_Disco); // incluir uma nova medida de memoria
+
+                        //grafico 4
+                        dados4.labels.shift(); // apagar o primeiro
+                        dados4.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
+                        dados4.datasets[0].data.shift();  // apagar o primeiro de memoria
+                        dados4.datasets[0].data.push(novoRegistro[0].uso_Processador); // incluir uma nova medida de memoria
+
+                       // dados.datasets[1].data.shift();  // apagar o primeiro de temperatura
+                        //dados.datasets[1].data.push(novoRegistro[0].uso_Processador); // incluir uma nova medida de temperatura
+
+                        //atualizando os graficos
+                        window.grafico_linha1.update();
+                        window.grafico_linha2.update();
+                        window.grafico_linha3.update();
+                        window.grafico_linha4.update();
+                    //}
+
+                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, dados2, dados3, dados4, myChart1, myChart2, myChart3, myChart4), 2000);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados, dados2, dados3, dados4, myChart1, myChart2, myChart3, myChart4), 2000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
     }
 </script>
-
