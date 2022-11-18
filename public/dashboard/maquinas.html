@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máquinas</title>
+
+    <link rel="stylesheet" href="maquinas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="imgs/logo-tech-health-2.png">
+            </div>
+            <a href="index.html" >
+                <span class="material-icons-sharp">home</span>
+                <h3>Início</h3>
+            </a>
+            <a href="paginaDash.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="perfil.html">
+                <span class="material-icons-sharp">person_outline</span>
+                <h3>Perfil</h3>
+            </a>
+            <a href="index.html" class="active">
+                <span class="material-icons-sharp">computer</span>
+                <h3>Máquinas</h3>
+            </a>
+            <a href="../login.html">
+                <span class="material-icons-sharp">logout</span>
+                <h3>Logout</h3>
+            </a>
+            
+        </div>
+        <div class="content">
+            <div class="top-menu">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">menu</span>
+                </button>
+                <div class="theme-toggler">
+                    <span class="material-icons-sharp active">light_mode</span>
+                    <span class="material-icons-sharp">dark_mode</span>
+                </div>
+                <div class="profile">
+                    <div class="info">
+                        <p>Olá, <b  id="userName">Dillan</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <!-- <div class="profile-photo">
+                        <img src="imgs/profile-1.jpg" alt="">
+                    </div> -->
+                </div>
+            </div>
+            
+            <div class="view">
+
+                <div class="modal-container">
+
+                    <div class="adc-maq">
+                        <h2>Adicionar nova máquina</h2>
+                        <span>Insira a ala do Hospital:</span>
+                        <input id="ipt-ala" type="text" placeholder="Ala do hospital">
+                        <div class="buttons">
+                            <button id="btn-confirma" onclick="confirma()">Adicionar</button>
+                            <button id="btn-cancelar" onclick="cancela()">Cancelar</button>
+                        </div>
+                    </div>
+
+                    <div class="remove-maq">
+                        <h1>Tem certeza?</h1>
+                        <div class="buttons">
+                            <button id="bt-sim" onclick="sim()">Sim</button>
+                            <button id="bt-nao" onclick="nao()">Não</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <h1>Suas máquinas</h1>
+
+                <div class="div-maquinas">
+                    <div class="botoes">
+                        <button id="btn-add" onclick="add()">Adicionar máquina</button>
+                        <button id="btn-delete" onclick="deletar()" >Remover máquina</button>
+                    </div>
+
+                    <div class="maquinas">
+                        <div class="maquina">
+                            <div class="img">
+                                <img src="imgs/desktop-icon.png" alt="">
+                            </div>
+                            <div class="info">
+                                <span>250GB</span>
+                                <span>8GB RAM</span>
+                                <span>Windows 10 Home</span>
+                            </div>
+                            <div class="ala">
+                                <span>Ala 1</span>
+                            </div>
+                            <div class="status">
+                                <span>Desligado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+    </div>
+
+    <script src="../js/maquinas.js"></script>
+     
+</body>
+
+</html>
+<script>
+
+    
+    function add(){
+        const modal = document.querySelector(".adc-maq")
+        modal.style.display = 'block'
+    }
+
+    function confirma(){
+        const modal = document.querySelector(".adc-maq")
+        modal.style.display = 'none'
+        alert("Máquina cadastrada com sucesso")
+        location.reload();
+
+        
+    }
+
+    function cancela(){
+        const modal = document.querySelector(".adc-maq")
+        modal.style.display = 'none'
+    }
+
+    function deletar() {
+        const remover = document.querySelector(".remove-maq")
+        remover.style.display = 'block'
+    }
+
+    function sim() {
+        alert("A máquina foi excluída com sucesso!")
+        location.reload();
+    }
+
+    function nao() {
+        const remover = document.querySelector(".remove-maq")
+        remover.style.display = 'none'
+    }
+</script>
+
+
