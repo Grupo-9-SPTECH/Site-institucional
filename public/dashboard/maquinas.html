@@ -17,7 +17,7 @@
             <div class="logo">
                 <img src="imgs/logo-tech-health-2.png">
             </div>
-            <a href="index.html" >
+            <a href="index.html">
                 <span class="material-icons-sharp">home</span>
                 <h3>Início</h3>
             </a>
@@ -25,7 +25,7 @@
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Perfil</h3>
             </a>
-            <a href="index.html" class="active">
+            <a href="maquinas.html" class="active">
                 <span class="material-icons-sharp">computer</span>
                 <h3>Máquinas</h3>
             </a>
@@ -37,12 +37,12 @@
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Perfil</h3>
             </a>
-            
+
             <a href="../login.html">
                 <span class="material-icons-sharp">logout</span>
                 <h3>Logout</h3>
             </a>
-            
+
         </div>
         <div class="content">
             <div class="top-menu">
@@ -55,7 +55,7 @@
                 </div>
                 <div class="profile">
                     <div class="info">
-                        <p>Olá, <b  id="userName">Dillan</b></p>
+                        <p>Olá, <b id="userName">User</b></p>
                         <small class="text-muted">Admin</small>
                     </div>
                     <!-- <div class="profile-photo">
@@ -63,7 +63,7 @@
                     </div> -->
                 </div>
             </div>
-            
+
             <div class="view">
 
                 <div class="modal-container">
@@ -71,18 +71,10 @@
                     <div class="adc-maq">
                         <h2>Adicionar nova máquina</h2>
                         <span>Insira a ala do Hospital:</span>
-                        <input id="ipt-ala" type="text" placeholder="Ala do hospital">
+                        <input id="ipt_ala" type="text" placeholder="Ala do hospital">
                         <div class="buttons">
                             <button id="btn-confirma" onclick="confirma()">Adicionar</button>
                             <button id="btn-cancelar" onclick="cancela()">Cancelar</button>
-                        </div>
-                    </div>
-
-                    <div class="remove-maq">
-                        <h1>Tem certeza?</h1>
-                        <div class="buttons">
-                            <button id="bt-sim" onclick="sim()">Sim</button>
-                            <button id="bt-nao" onclick="nao()">Não</button>
                         </div>
                     </div>
 
@@ -93,7 +85,15 @@
                 <div class="div-maquinas">
                     <div class="botoes">
                         <button id="btn-add" onclick="add()">Adicionar máquina</button>
-                        <button id="btn-delete" onclick="deletar()" >Remover máquina</button>
+                        <button id="btn-delete" onclick="deletar()">Remover máquina</button>
+                    </div>
+
+                    <div class="remove-maq">
+                        <h1>Tem certeza?</h1>
+                        <div class="buttons">
+                            <button id="bt-sim" onclick="remove()">Sim</button>
+                            <button id="bt-nao" onclick="nao()">Não</button>
+                        </div>
                     </div>
 
                     <div class="maquinas">
@@ -116,34 +116,70 @@
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
     </div>
 
     <script src="../js/maquinas.js"></script>
-     
+
 </body>
 
 </html>
 <script>
 
-    
-    function add(){
+
+    function add() {
         const modal = document.querySelector(".adc-maq")
         modal.style.display = 'block'
     }
 
-    function confirma(){
-        const modal = document.querySelector(".adc-maq")
-        modal.style.display = 'none'
-        alert("Máquina cadastrada com sucesso")
-        location.reload();
+    function confirma() {
+        var alaVar = ipt_ala.value;
+        console.log(alaVar);
+
+        fetch("/maq_Hosp/confirma", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                alaServer: alaVar
+
+                
+            })
+            // console.log();
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                window.location = "login.html";
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        //  return false;
+
+    const modal = document.querySelector(".adc-maq")
+    modal.style.display = 'none'
+    alert("Máquina cadastrada com sucesso")
+    location.reload();
 
         
     }
 
-    function cancela(){
+    function cancela() {
         const modal = document.querySelector(".adc-maq")
         modal.style.display = 'none'
     }
@@ -153,7 +189,39 @@
         remover.style.display = 'block'
     }
 
-    function sim() {
+        function remove(idMaquina) {
+        // var alaVar = ipt_ala.value;
+
+        fetch(`/maq_Hosp/remove/${idMaquina}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                // alaServer: alaVar
+
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                window.location = "login.html";
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar remover o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        //  return false;
         alert("A máquina foi excluída com sucesso!")
         location.reload();
     }
@@ -163,5 +231,3 @@
         remover.style.display = 'none'
     }
 </script>
-
-

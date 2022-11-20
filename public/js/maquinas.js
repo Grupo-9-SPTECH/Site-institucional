@@ -11,9 +11,9 @@ menuBtn.addEventListener('click', () => {
 })
 
 
-closeBtn.addEventListener('click', () =>{
-    sideMenu.style.display = 'none';
-})
+// closeBtn.addEventListener('click', () =>{
+//     sideMenu.style.display = 'none';
+// })
 
 themeToggler.addEventListener('click', () => {
     console.log("apertou!!");
@@ -31,9 +31,9 @@ themeToggler.addEventListener('click', () => {
 const addM = document.querySelector("#btn-add");
 const delM = document.querySelector("#btn-delete")
 
-btnCancelar.addEventListener('click', () => {
-    modal.style.display = 'none'
-})
+// btnCancelar.addEventListener('click', () => {
+//     modal.style.display = 'none'
+// })
 
 // addM.addEventListener('click', () => {
 //     modal.style.display = 'block'
