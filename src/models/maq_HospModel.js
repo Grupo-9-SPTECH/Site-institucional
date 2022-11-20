@@ -27,6 +27,6 @@ function confirma(ala_Hospitalar) {
 // }
 
 module.exports = {
-    confirma,
-    remove
+    confirma
+    // remove
 };
