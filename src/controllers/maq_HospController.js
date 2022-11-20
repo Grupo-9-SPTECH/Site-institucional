@@ -6,10 +6,8 @@ function confirma(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var ala_Hospitalar = req.body.alaServer;
     
-
-
     // Faça as validações dos valores
-    if (ala_Hospitalar = undefined) {
+    if (ala_Hospitalar == undefined) {
         res.status(400).send("Ala Hospitalar não definida pelo usuário");
     } else {
         
