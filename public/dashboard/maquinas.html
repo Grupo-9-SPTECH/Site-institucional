@@ -17,25 +17,25 @@
             <div class="logo">
                 <img src="imgs/logo-tech-health-2.png">
             </div>
-            <a href="index.html">
+            <a href="index.html" class="active">
                 <span class="material-icons-sharp">home</span>
                 <h3>Início</h3>
+            </a>
+            <a href="cadastroHospital.html">
+                <span class="material-icons-sharp">local_hospital</span>
+                <h3>Hospitais</h3>
             </a>
             <a href="perfil.html">
                 <span class="material-icons-sharp">person_outline</span>
                 <h3>Perfil</h3>
-            </a>
-            <a href="maquinas.html" class="active">
-                <span class="material-icons-sharp">computer</span>
-                <h3>Máquinas</h3>
             </a>
             <a href="paginaDash.html">
                 <span class="material-icons-sharp">grid_view</span>
                 <h3>Dashboard</h3>
             </a>
-            <a href="perfil.html">
-                <span class="material-icons-sharp">person_outline</span>
-                <h3>Perfil</h3>
+            <a href="#">
+                <span class="material-icons-sharp">computer</span>
+                <h3>Máquinas</h3>
             </a>
 
             <a href="../login.html">
@@ -71,7 +71,7 @@
                     <div class="adc-maq">
                         <h2>Adicionar nova máquina</h2>
                         <span>Insira a ala do Hospital:</span>
-                        <input id="ipt_ala" type="text" placeholder="Ala do hospital">
+                        <input id="ala_input" type="text" placeholder="Ala do hospital">
                         <div class="buttons">
                             <button id="btn-confirma" onclick="confirma()">Adicionar</button>
                             <button id="btn-cancelar" onclick="cancela()">Cancelar</button>
@@ -135,8 +135,8 @@
     }
 
     function confirma() {
-        var alaVar = ipt_ala.value;
-        console.log(alaVar);
+        var ala_HospitalarVar = ala_input.value;
+        console.log(ala_HospitalarVar);
 
         fetch("/maq_Hosp/confirma", {
             method: "POST",
@@ -146,7 +146,7 @@
             body: JSON.stringify({
                 // crie um atributo que recebe o valor recuperado aqui
                 // Agora vá para o arquivo routes/usuario.js
-                alaServer: alaVar
+                ala_HospitalarServer: ala_HospitalarVar,
 
                 
             })
@@ -189,10 +189,18 @@
         remover.style.display = 'block'
     }
 
-        function remove(idMaquina) {
+    function nao() {
+        const remover = document.querySelector(".remove-maq")
+        remover.style.display = 'none'
+    }
+</script>
+
+<script>
+
+function remove(idMaquina) {
         // var alaVar = ipt_ala.value;
 
-        fetch(`/maq_Hosp/remove/${idMaquina}`, {
+        fetch(`/maq_Hosp/remove`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -203,31 +211,36 @@
                 // alaServer: alaVar
 
             })
-        }).then(function (resposta) {
+         })
+         
+         
+         
+         
+         
+         
+         
+        //  .then(function (resposta) {
 
-            console.log("resposta: ", resposta);
+    //         console.log("resposta: ", resposta);
 
-            if (resposta.ok) {
-                cardErro.style.display = "block"
-                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-                window.location = "login.html";
-                // limparFormulario();
-                // finalizarAguardar();
-            } else {
-                throw ("Houve um erro ao tentar remover o cadastro!");
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-            // finalizarAguardar();
-        });
+    //         if (resposta.ok) {
+    //             cardErro.style.display = "block"
+    //             mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+    //             window.location = "login.html";
+    //             // limparFormulario();
+    //             // finalizarAguardar();
+    //         } else {
+    //             throw ("Houve um erro ao tentar remover o cadastro!");
+    //         }
+    //     }).catch(function (resposta) {
+    //         console.log(`#ERRO: ${resposta}`);
+    //         // finalizarAguardar();
+    //     });
 
-        //  return false;
-        alert("A máquina foi excluída com sucesso!")
-        location.reload();
-    }
+    //     //  return false;
+    //     alert("A máquina foi excluída com sucesso!")
+    //     location.reload();
+    // }
+        }
 
-    function nao() {
-        const remover = document.querySelector(".remove-maq")
-        remover.style.display = 'none'
-    }
 </script>

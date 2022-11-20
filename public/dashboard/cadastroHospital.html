@@ -20,31 +20,34 @@
             <div class="logo">
                 <img src="imgs/logo-tech-health-2.png">
             </div>
-            <a href="index.html" >
+            <a href="index.html" class="active">
                 <span class="material-icons-sharp">home</span>
                 <h3>Início</h3>
-            </a>
-            <a href="paginaDash.html">
-                <span class="material-icons-sharp">grid_view</span>
-                <h3>Dashboard</h3>
-            </a>
-            <a href="perfil.html" class="active">
-                <span class="material-icons-sharp">person_outline</span>
-                <h3>Perfil</h3>
             </a>
             <a href="#">
                 <span class="material-icons-sharp">local_hospital</span>
                 <h3>Hospitais</h3>
             </a>
-            <a href="historico.html">
-                <span class="material-icons-sharp">report_gmailerrorred</span>
-                <h3>Histórico</h3>
+            <a href="perfil.html">
+                <span class="material-icons-sharp">person_outline</span>
+                <h3>Perfil</h3>
             </a>
+            <a href="paginaDash.html">
+                <span class="material-icons-sharp">grid_view</span>
+                <h3>Dashboard</h3>
+            </a>
+            <a href="maquinas.html">
+                <span class="material-icons-sharp">computer</span>
+                <h3>Máquinas</h3>
+            </a>
+            <div>
             <a href="../login.html">
-                <span class="material-icons-sharp">logout</span>
+                <div class="material-icons-sharp">logout</div>
                 <h3>Logout</h3>
             </a>
         </div>
+        </div>
+        
         <div class="content">
             <div class="top-menu">
                 <button id="menu-btn">
@@ -70,27 +73,27 @@
                     <div class="left">
                         <div class="user-item">
                             <h3>Nome do Hospital: </h3>
-                            <input type="text">
+                            <input id="nome_input" type="text">
                         </div>
                         <div class="user-item">
                             <h3>CNPJ: </h3>
-                            <input type="text">
+                            <input id="cnpj_input" type="text">
                         </div>
                         <div class="user-item">
                             <h3>Endereço:</h3>
-                            <input type="text">
+                            <input id="endereco_input" type="text">
                         </div>
                         <div class="user-item">
                             <h3>Bairro</h3>
-                            <input type="text">
+                            <input id="bairro_input" type="text">
                         </div>
                         <div class="user-item">
                             <h3>Cidade:</h3>
-                            <input type="text">
+                            <input id="cidade_input" type="text">
                         </div>
                         <div class="user-item">
                             <h3>UF:</h3>
-                            <select name="estados-brasil">
+                            <select id="uf_input" name="estados-brasil">
                                 <option>--Selecionar--</option>
                                 <option value="AC">Acre</option>
                                 <option value="AL">Alagoas</option>
@@ -122,7 +125,7 @@
                             </select>
                         </div>
                         <div class="user-item">
-                            <button class="salvar">Salvar</button>
+                            <button onclick="cadastrar()" class="salvar">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -134,3 +137,91 @@
     <script src="../js/perfil.js"></script>
 </body>
 </html>
+
+<script>
+
+    function cadastrar() {
+        //  aguardar();
+
+        //Recupere o valor da nova input pelo nome do id
+        //Agora vá para o método fetch logo abaixo
+        var nome_HospitalVar = nome_input.value;
+        var cnpjVar = cnpj_input.value;
+        var enderecoVar = endereco_input.value;
+        var bairroVar = bairro_input.value;
+        var cidadeVar = cidade_input.value;
+        var ufVar = uf_input.value;
+
+        if (nome_HospitalVar == "" || cnpjVar == "" ||enderecoVar == "" || bairroVar == "" || cidadeVar == "" || ufVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha todos os campos para prosseguir!";
+
+        //     finalizarAguardar();
+        //     return false;
+         }
+        // else {
+        //     setInterval(sumirMensagem, 8000)
+        // }
+
+        // if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        // if (senhaVar != confirmacaoSenhaVar) {
+        //     cardErro.style.display = "block"
+        //     mensagem_erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+        //     finalizarAguardar();
+        //     return false;
+        // }
+        // else {
+        //     setInterval(sumirMensagem, 5000)
+        // }
+
+        // Enviando o valor da nova input
+        fetch("/maq_Hosp/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nome_HospitalServer: nome_HospitalVar,
+                cnpjServer: cnpjVar,
+                enderecoServer: enderecoVar,
+                bairroServer: bairroVar,
+                cidadeServer: cidadeVar,
+                ufServer: ufVar
+            })
+        }).then(function (resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                cardErro.style.display = "block"
+                mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
+                window.location = "login.html";
+                // limparFormulario();
+                // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            // finalizarAguardar();
+        });
+
+        return false;
+    }
+
+    // function sumirMensagem() {
+    //     cardErro.style.display = "none"
+    // }
+
+</script>

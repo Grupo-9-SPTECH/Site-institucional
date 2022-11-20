@@ -4,7 +4,7 @@ var sessoes = [];
 
 function confirma(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var ala_Hospitalar = req.body.alaServer;
+    var ala_Hospitalar = req.body.ala_HospitalarServer;
     
 
 
@@ -61,7 +61,49 @@ function remove(req, res) {
     }
 }
 
+function cadastrar(req, res) {
+    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var nome_Hospital = req.body.nome_HospitalServer;
+    var cnpj = req.body.cnpjServer;
+    var endereco = req.body.enderecoServer;
+    var bairro = req.body.bairroServer;
+    var cidade = req.body.cidadeServer;
+    var uf = req.body.ufServer;
+
+    // Faça as validações dos valores
+    if (nome_Hospital == undefined) {
+        res.status(400).send("Seu nome está undefined!");
+    } else if (cnpj == undefined) {
+        res.status(400).send("Seu CNPJ está undefined!");
+    } else if (endereco == undefined) {
+        res.status(400).send("Seu endereco está undefined!");
+    }else if (bairro == undefined) {
+        res.status(400).send("Seu bairro está undefined!");
+    } else if (cidade == undefined) {
+        res.status(400).send("Sua cidade está undefined!");
+    } else {
+        
+        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
+        maq_HospModel.cadastrar(nome_Hospital, cnpj, endereco, bairro, cidade, uf)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o cadastro! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
+    }
+}
+
 module.exports = {
     confirma,
-    remove
+    remove,
+    cadastrar
 }
