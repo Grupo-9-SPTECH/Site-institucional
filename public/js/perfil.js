@@ -8,9 +8,9 @@ var perfilEmail = document.getElementById("perfilEmail");
 var perfilPermissao = document.getElementById("perfilPermissao");
 
 userName.innerHTML = sessionStorage.NOME_USUARIO;
-// perfilName.innerHTML = sessionStorage.NOME_USUARIO;
-// perfilEmail.innerHTML = sessionStorage.EMAIL_USUARIO;
-// perfilPermissao.innerHTML = sessionStorage.HOSPITAL_USUARIO;
+perfilName.innerHTML = sessionStorage.NOME_USUARIO;
+perfilEmail.innerHTML = sessionStorage.EMAIL_USUARIO;
+perfilPermissao.innerHTML = sessionStorage.HOSPITAL_USUARIO;
 
 
 menuBtn.addEventListener('click', () => {
