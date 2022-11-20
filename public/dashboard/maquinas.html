@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Máquinas</title>
-
+    <script src="./js/funcoes.js"></script>
     <link rel="stylesheet" href="maquinas.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
@@ -121,7 +121,7 @@
         </div>
     </div>
 
-    <script src="../js/maquinas.js"></script>
+    <!-- <script src="../js/maquinas.js"></script> -->
 
 </body>
 
@@ -148,7 +148,7 @@
                 // Agora vá para o arquivo routes/usuario.js
                 ala_HospitalarServer: ala_HospitalarVar,
 
-                
+
             })
             // console.log();
         }).then(function (resposta) {
@@ -171,12 +171,12 @@
 
         //  return false;
 
-    const modal = document.querySelector(".adc-maq")
-    modal.style.display = 'none'
-    alert("Máquina cadastrada com sucesso")
-    location.reload();
+        const modal = document.querySelector(".adc-maq")
+        modal.style.display = 'none'
+        alert("Máquina cadastrada com sucesso")
+        location.reload();
 
-        
+
     }
 
     function cancela() {
@@ -189,15 +189,7 @@
         remover.style.display = 'block'
     }
 
-    function nao() {
-        const remover = document.querySelector(".remove-maq")
-        remover.style.display = 'none'
-    }
-</script>
-
-<script>
-
-function remove(idMaquina) {
+        function remove(idMaquina) {
         // var alaVar = ipt_ala.value;
 
         fetch(`/maq_Hosp/remove`, {
