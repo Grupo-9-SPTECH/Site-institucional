@@ -303,58 +303,52 @@ b {
     text-align: center;
 }
 
-.content .view .user-box{
+/* .content .view .user-box{
     display: flex;
     width: 40vw;
     justify-content: center;
     height: 100vh;
-    box-shadow: var(--box-shadow);
+    
     border-radius: var(--border-radius-1);
 
-}
+} */
 
 
-.content .view .user-box .left {
+.content .view .user-box {
     display: flex;
     flex-direction: column;
-    padding: 5px 30px;
-    width: 50%;
-    justify-content: center;
+    padding: 5px 15px;
     margin-left: 30px;
+    width: 40%;
+    border-radius: var(--border-radius-1);
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow);
     align-items: center;
 }
 
-.content .view .user-box .right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50%;
+.user-item {
+    margin: 10px 0;
 }
 
-.content .view .user-box .right .user-img{
-    margin: 20px;
-    margin-left: 85px;
+.user-item select {
+    border-radius: var(--border-radius-1);
+    background-color: var(--color-info-light);
+    padding: 5px 13px;
     width: 100%;
 }
-.content .view .user-box .right .user-img img {
-    width: 200px;
-    border-radius: 50%;
-    
+
+.user-box .user-item input {
+    border-radius: var(--border-radius-1);
+    background-color: rgba(196, 220, 230, 0.555);
+    padding: 15px;
 }
 
-.content .view .left .user-item{
-    margin: 15px 0;
-}
-
-.content .view .left .user-item h3{
-    font-size: 19px;
+.user-box h3 {
     color: var(--color-primary);
-    font-weight: bolder;
+    font-size: 16px;
 }
 
-.content .view .left .user-item span{
-    font-size: 18px;
-}
+
 
 .view input{
     width: 300px;
