@@ -160,6 +160,7 @@ b {
     height: 100%;
     margin-top: 1.6rem;
     
+    
 }
 
 .sidebar .close {
@@ -193,7 +194,6 @@ b {
 .sidebar a:last-child {
     position: absolute;
     bottom: 2rem;
-    width: 100%;
 }
 
 .sidebar a.active {
@@ -321,6 +321,7 @@ b {
     width: 50%;
     justify-content: center;
     margin-left: 30px;
+    align-items: center;
 }
 
 .content .view .user-box .right {

@@ -189,7 +189,7 @@ b {
 .sidebar a:last-child {
     position: absolute;
     bottom: 2rem;
-    width: 100%;
+    
 }
 
 .sidebar a.active {
