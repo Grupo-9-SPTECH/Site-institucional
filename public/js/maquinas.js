@@ -6,9 +6,9 @@ var userName = document.getElementById("userName");
 
 userName.innerHTML = sessionStorage.NOME_USUARIO;
 
-menuBtn.addEventListener('click', () => {
-    sideMenu.style.display = 'block';
-})
+// menuBtn.addEventListener('click', () => {
+//     sideMenu.style.display = 'block';
+// })
 
 
 // closeBtn.addEventListener('click', () =>{
@@ -41,14 +41,14 @@ const delM = document.querySelector("#btn-delete")
 
 // confirma.addEventListener('click', () => {
 //     modal.style.display = 'none'
-// }
+// })
 
 
 
 // function add(){
 //     const modal = document.querySelector(".adc-maq")
 //     modal.style.display = 'block'
-// }
+//  }
 
 
 

@@ -37,7 +37,7 @@
                 <span class="material-icons-sharp">grid_view</span>
                 <h3>Dashboard</h3>
             </a>
-            
+
 
             <a href="../login.html">
                 <span class="material-icons-sharp">logout</span>
@@ -92,8 +92,8 @@
                     <div class="remove-maq">
                         <h1>Tem certeza?</h1>
                         <div class="buttons">
-                            <button id="bt-sim" onclick="remove()">Sim</button>
-                            <button id="bt-nao" onclick="nao()">Não</button>
+                            <button id="bt_sim" onclick="remove()">Sim</button>
+                            <button id="bt_nao">Não</button>
                         </div>
                     </div>
 
@@ -122,7 +122,7 @@
         </div>
     </div>
 
-    <!-- <script src="../js/maquinas.js"></script> -->
+     <script src="../js/maquinas.js"></script> 
 
 </body>
 
@@ -190,50 +190,43 @@
         remover.style.display = 'block'
     }
 
-        function remove(idMaquina) {
-        // var alaVar = ipt_ala.value;
 
-        fetch(`/maq_Hosp/remove`, {
-            method: "POST",
+    function remove(idMaquina) {
+        // var alaVar = ipt_ala.value;
+        console.log("Criar função de apagar maquina escolhida - ID" + idMaquina);
+        fetch(`/maq_Hosp/remove/${idMaquina}`, {
+            method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                // alaServer: alaVar
+            }
+            // body: JSON.stringify({
+            //     // crie um atributo que recebe o valor recuperado aqui
+            //     // Agora vá para o arquivo routes/usuario.js
+            //     // alaServer: alaVar
 
-            })
-         })
-         
-         
-         
-         
-         
-         
-         
-        //  .then(function (resposta) {
+            // })
 
-    //         console.log("resposta: ", resposta);
+        }).then(function (resposta) {
 
-    //         if (resposta.ok) {
-    //             cardErro.style.display = "block"
-    //             mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
-    //             window.location = "login.html";
-    //             // limparFormulario();
-    //             // finalizarAguardar();
-    //         } else {
-    //             throw ("Houve um erro ao tentar remover o cadastro!");
-    //         }
-    //     }).catch(function (resposta) {
-    //         console.log(`#ERRO: ${resposta}`);
-    //         // finalizarAguardar();
-    //     });
+            // console.log("resposta: ", resposta);
 
-    //     //  return false;
-    //     alert("A máquina foi excluída com sucesso!")
-    //     location.reload();
-    // }
-        }
+            if (resposta.ok) {
+                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem
+                ("EMAIL_USUARIO") + "!");
+                alert("A máquina foi excluída com sucesso!")
+        location.reload();
+                window.location = "/dashboard/maquinas.html"
+            } else if (resposta.status == 404) {
+                window.alert("Deu 404!");
+            } else {
+                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+            }
+        }).catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+        });
+
+        //  return false;
+    }
+
 
 </script>

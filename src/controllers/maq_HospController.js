@@ -31,32 +31,20 @@ function confirma(req, res) {
 }
 
 function remove(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var idMaquina = req.body.idMaquina;
-
-
-    // Faça as validações dos valores
-    if (ala = null) {
-        res.status(400).send("Ala Hospitalar não definida pelo usuário");
-    } else {
-        
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        maq_HospModel.remove(idMaquina)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao remover o cadastro o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
-    }
+    var idMaquina = req.params.idMaquina;
+    maq_HospModel.remove(idMaquina)
+        .then(
+            function (resultado) {
+                res.json(resultado);
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
+                resposta.status(500).json(erro.sqlMessage);
+            }
+        );
 }
 
 function cadastrar(req, res) {

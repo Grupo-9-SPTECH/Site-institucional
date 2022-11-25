@@ -8,7 +8,7 @@ router.post("/confirma", function (req, res) {
     maq_HospController.confirma(req, res);
 })
 
-router.post("/remove", function (req, res) {
+ router.delete("/remove/:idMaquina", function (req, res) {
     maq_HospController.remove(req, res);
 })
 
