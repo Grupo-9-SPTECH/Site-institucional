@@ -5,6 +5,7 @@ const themeToggler = document.querySelector(".theme-toggler");
 var userName = document.getElementById("userName");
 
 userName.innerHTML = sessionStorage.NOME_USUARIO;
+var idMaquina = sessionStorage.ID_MAQUINA = json.idMaquina;
 
 // menuBtn.addEventListener('click', () => {
 //     sideMenu.style.display = 'block';

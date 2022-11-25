@@ -41,8 +41,7 @@ function remove(req, res) {
         .catch(
             function (erro) {
                 console.log(erro);
-                console.log("Houve um erro ao deletar o post: ", erro.sqlMessage);
-                resposta.status(500).json(erro.sqlMessage);
+                console.log("Houve um erro ao deletar a maquina: ", erro.sqlMessage);
             }
         );
 }
