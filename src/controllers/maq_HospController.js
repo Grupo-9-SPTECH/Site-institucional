@@ -32,6 +32,7 @@ function confirma(req, res) {
 
 function remove(req, res) {
     var idMaquina = req.params.idMaquina;
+
     maq_HospModel.remove(idMaquina)
         .then(
             function (resultado) {
@@ -41,7 +42,8 @@ function remove(req, res) {
         .catch(
             function (erro) {
                 console.log(erro);
-                console.log("Houve um erro ao deletar a maquina: ", erro.sqlMessage);
+                console.log("Houve um erro ao deletar maquina: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
             }
         );
 }

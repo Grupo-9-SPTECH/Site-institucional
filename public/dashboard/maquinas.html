@@ -192,30 +192,19 @@
 
 
     function remove(idMaquina) {
-        // var alaVar = ipt_ala.value;
-        console.log("Criar função de apagar maquina escolhida - ID" + idMaquina);
+        console.log("Criar função de apagar Maquina escolhida - ID" + idMaquina);
         fetch(`/maq_Hosp/remove/${idMaquina}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             }
-            // body: JSON.stringify({
-            //     // crie um atributo que recebe o valor recuperado aqui
-            //     // Agora vá para o arquivo routes/usuario.js
-            //     // alaServer: alaVar
-
-            // })
-
         }).then(function (resposta) {
 
-            // console.log("resposta: ", resposta);
-
             if (resposta.ok) {
-                window.alert("Post deletado com sucesso pelo usuario de email: " + sessionStorage.getItem
-                ("EMAIL_USUARIO") + "!");
+                window.alert("Maquina deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+                window.location = "../dashboard/maquinas.html"
                 alert("A máquina foi excluída com sucesso!")
         location.reload();
-                window.location = "/dashboard/maquinas.html"
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -224,9 +213,5 @@
         }).catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
-
-        //  return false;
     }
-
-
 </script>

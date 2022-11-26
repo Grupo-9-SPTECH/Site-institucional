@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Dashboard | Tech Health</title>
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
+
 <body>
     <div class="container">
         <aside>
-            
+
             <div class="close" id="close-btn">
                 <span class="material-icons-sharp">
                     close
@@ -63,7 +65,7 @@
                     <span class="material-icons-sharp">report_gmailerrorred</span>
                     <h3>Histórico</h3>
                 </a> -->
-                
+
                 <!-- <a href="#">
                     <span class="material-icons-sharp">add</span>
                     <h3>Add Produto</h3>
@@ -78,12 +80,12 @@
 
         <!-- MAIN -->
         <main>
-            <h1>OVERVIEW    </h1>
+            <h1>OVERVIEW </h1>
             <!-- <div class="date">
                 <input type="date">
             </div> -->
             <div class="insights">
-                
+
                 <div class="divzera">
 
                     <div class="maqs">
@@ -93,10 +95,10 @@
                             </span>
                             <h3>Máquinas cadastradas</h3>
                         </div>
-                        <h1>7</h1>  
+                        <h1 id="qtd_maquinas" onload="card_index()">7</h1>
                         <small class="text-muted">No momento</small>
                     </div>
-                    
+
                     <div class="users">
                         <div class="tag">
                             <span class="material-icons-sharp">
@@ -104,7 +106,7 @@
                             </span>
                             <h3>Quantidade de usuários</h3>
                         </div>
-                        <h1>6</h1>
+                        <h1 id="qtd_usuarios" onload="card_index()">6</h1>
                         <small class="text-muted">No momento</small>
                     </div>
                 </div>
@@ -116,14 +118,14 @@
                         </span>
                         <h3>Qntd. de alas</h3>
                     </div>
-                    <h1>10</h1>
+                    <h1 id="qtd_alas" onload="card_index()">10</h1>
                     <small class="text-muted">No momento</small>
                 </div>
 
-                
+
             </div>
 
-            
+
         </main>
 
         <div class="right">
@@ -132,7 +134,7 @@
                     <span class="material-icons-sharp">menu</span>
                 </button>
                 <div class="theme-toggler">
-                    <span class="material-icons-sharp active" >light_mode</span>
+                    <span class="material-icons-sharp active">light_mode</span>
                     <span class="material-icons-sharp">dark_mode</span>
                 </div>
                 <div class="profile">
@@ -178,10 +180,19 @@
                 </div>
             </div> -->
 
-            
+
         </div>
     </div>
 
     <script src="index.js"></script>
 </body>
+
 </html>
+
+<script>
+
+    function card_index() {
+
+
+    }
+</script>
