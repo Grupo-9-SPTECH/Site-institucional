@@ -10,8 +10,9 @@
     <link rel="stylesheet" href="maquinas.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
-<!-- onload="mostrarInfo(idMaquina) -->
-<body >
+<!--  -->
+
+<body onload="mostrarInfo(1)">
     <div class="container">
         <div class="sidebar">
             <div class="logo">
@@ -103,18 +104,19 @@
                                 <img src="imgs/desktop-icon.png" alt="">
                             </div>
                             <div class="info">
-                                <span>ID:  <span id="idMaq"></span></span>
-                                <span>Tamanho da Memória:  <span id="tamMemoria"></span>GB</span>
-                                <span>Sistema Operacional:  <span id="soMaq"></span></span>
-                                <span>Tamaho do Disco:  <span id="tamDisco"></span></span>
-                                
+                                <span>ID: <span id="idMaq"></span></span>
+                                <span>Tamanho da Memória: <span id="tamMemoria"></span>GB</span>
+                                <span>Sistema Operacional: <span id="soMaq"></span></span>
+                                <span>Tamanho do Disco: <span id="tamDisco"></span>GB</span>
+
                             </div>
-                            <div class="ala">Ala: 
+                            <div class="ala">Ala:
                                 <span id="alaHospital"></span>
                             </div>
                             <div class="status">
-                                <span id="status">Desligado</span>
-                                <span id="status2">Ativo</span>
+                                
+                                <span id="status2" style="display: none;">Ativo</span>
+                                
                             </div>
                         </div>
                     </div>
@@ -125,14 +127,15 @@
         </div>
     </div>
 
-     <script src="../js/maquinas.js"></script> 
+    <script src="../js/maquinas.js"></script>
 
 </body>
 
 </html>
 <script>
 
-    status2.style.display = 'none'
+    //window.onload = mostrarInfo(1);
+
 
     function add() {
         const modal = document.querySelector(".adc-maq")
@@ -183,6 +186,8 @@
         alert("Máquina cadastrada com sucesso")
         location.reload();
 
+        //window.onload = mostrarInfo(1);
+
 
     }
 
@@ -210,7 +215,7 @@
                 window.alert("Maquina deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
                 window.location = "../dashboard/maquinas.html"
                 alert("A máquina foi excluída com sucesso!")
-        location.reload();
+                location.reload();
             } else if (resposta.status == 404) {
                 window.alert("Deu 404!");
             } else {
@@ -221,36 +226,44 @@
         });
     }
 
-    // fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
-    //         if (response.ok) {
-    //             response.json().then(function (novoRegistro) {
 
-    // function mostrarInfo(idMaquina) {
-    //     fetch(`/maq_Hosp/mostrarInfoMaq/${idMaquina}`).then(resposta => {
-    //         if (resposta.ok) {
-    //             resposta.json().then(function (res) {
-    //                 var idMaq = document.getElementById('idMaq');
-    //                 var tamMemoria = document.getElementById('tamMemoria');
-    //                 var tamDisco = document.getElementById('tamDisco');
-    //                 var alaHospital = document.getElementById('alaHospital');
-    //                 var soMaq = document.getElementById('soMaq');
+    function mostrarInfo(idMaquina) {
 
-    //                 idMaq.innerHTML = res[0].id;
-    //                 tamMemoria.innerHTM = res[0].totalMemoria;
-    //                 tamDisc.innerHTM = res[0].totalDisco
-    //                 alaHospital.innerHTM = res[0].ala;
-    //                 soMaq.innerHTM = res[0].so;
+        fetch(`/maq_Hosp/mostrarInfoMaq/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
 
-    //             })
+                    var idMaq = document.getElementById('idMaq');
+                    var tamMemoria = document.getElementById('tamMemoria');
+                    var tamDisco = document.getElementById('tamDisco');
+                    var alaHospital = document.getElementById('alaHospital');
+                    var soMaq = document.getElementById('soMaq');
 
-    //         } else {
+                    idMaq.innerHTML = resposta[0].id;
+                    tamMemoria.innerHTML = resposta[0].totalMemoria;
+                    tamDisco.innerHTML = resposta[0].totalDisco;
+                    alaHospital.innerHTML = resposta[0].ala;
+                    soMaq.innerHTML = resposta[0].so;
+                    
+                    status2.style.display = 'block'
+                    
 
-    //             console.error('Nenhum dado encontrado ou erro na API');
-    //         }
-    //     })
 
-    //         .catch(function (error) {
-    //             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
-    //         });
-    // }
+                })
+
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
+
+
+
 </script>

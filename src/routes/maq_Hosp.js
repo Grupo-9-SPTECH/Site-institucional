@@ -16,10 +16,11 @@ router.post("/cadastrar", function (req, res) {
     maq_HospController.cadastrar(req, res);
 });
 
-// router.get("/mostrarInfoMaq/:idMaquina", function (req, res) {
-//     maq_HospController.mostrarInfo(req, res);
-// });
+router.get("/mostrarInfoMaq/:idMaquina", function (req, res) {
+    maq_HospController.mostrarInfo(req, res);
+});
 
 
 
-module.exports = router;
+
+module.exports = router;  

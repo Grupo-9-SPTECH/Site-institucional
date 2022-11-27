@@ -7,8 +7,12 @@ router.get("/buscarUsuarios", function (req, res) {
     indexController.buscarUsuarios(req, res);
 });
 
-router.get("/buscarInfoMaq", function (req, res) {
+router.get("/buscarInfoMaquina", function (req, res) {
     indexController.buscarInfosIndex(req, res);
 });
 
-module.exports = router;  
+router.get("/buscarInfoHospital", function (req, res) {
+    indexController.mostrarHospital(req, res);
+});
+
+module.exports = router;   

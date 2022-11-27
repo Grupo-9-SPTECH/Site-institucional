@@ -193,7 +193,7 @@
 <script>
 
     function buscarInfosIndex() {
-        fetch(`/buscar/buscarInfoMaq`).then(resposta => {
+        fetch(`/buscar/buscarInfoMaquina`).then(resposta => {
             if (resposta.ok) {
                 resposta.json().then(function (res) {
                     var qtd_alas = document.getElementById('qtd_alas');

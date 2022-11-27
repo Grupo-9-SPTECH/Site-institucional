@@ -24,7 +24,7 @@ function buscarInfosIndex() {
     instrucaoSql = ''
 
     if (process.env.AMBIENTE_PROCESSO == "producao") {
-        instrucaoSql = `select count(idMaquina) as contagemMaq, count (distinct ala_Hospitalar) as alas,  from maquina`;
+        instrucaoSql = `select count(idMaquina) as contagemMaq, count (distinct ala_Hospitalar) as alas from maquina`;
 
     } else if (process.env.AMBIENTE_PROCESSO == "desenvolvimento") {
         instrucaoSql = `select top 1
@@ -40,7 +40,17 @@ function buscarInfosIndex() {
     return database.executar(instrucaoSql);
 }
 
+function mostrarHospital() {
+    var instrucao = ` select nome_Hospital as nome_Hospital, maquina.Idmaquina as idMaq from hospital 
+    join maquina on hospital.idHospital = maquina.fkHospital order by idHospital desc
+               `;
+    console.log("Executando a instrução SQL: \n" + instrucao);
+    return database.executar(instrucao);
+}
+
 module.exports = {
     buscarUsuarios,
-    buscarInfosIndex
+    buscarInfosIndex,
+    mostrarHospital
 }
+ 
