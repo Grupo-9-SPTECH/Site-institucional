@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="maquinas.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
 </head>
-
-<body>
+<!-- onload="mostrarInfo(idMaquina) -->
+<body >
     <div class="container">
         <div class="sidebar">
             <div class="logo">
@@ -103,15 +103,18 @@
                                 <img src="imgs/desktop-icon.png" alt="">
                             </div>
                             <div class="info">
-                                <span>250GB</span>
-                                <span>8GB RAM</span>
-                                <span>Windows 10 Home</span>
+                                <span>ID:  <span id="idMaq"></span></span>
+                                <span>Tamanho da Memória:  <span id="tamMemoria"></span>GB</span>
+                                <span>Sistema Operacional:  <span id="soMaq"></span></span>
+                                <span>Tamaho do Disco:  <span id="tamDisco"></span></span>
+                                
                             </div>
-                            <div class="ala">
-                                <span>Ala 1</span>
+                            <div class="ala">Ala: 
+                                <span id="alaHospital"></span>
                             </div>
                             <div class="status">
-                                <span>Desligado</span>
+                                <span id="status">Desligado</span>
+                                <span id="status2">Ativo</span>
                             </div>
                         </div>
                     </div>
@@ -129,6 +132,7 @@
 </html>
 <script>
 
+    status2.style.display = 'none'
 
     function add() {
         const modal = document.querySelector(".adc-maq")
@@ -160,6 +164,8 @@
                 cardErro.style.display = "block"
                 mensagem_erro.innerHTML = "Cadastro realizado com sucesso!";
                 window.location = "login.html";
+                status2.style.display = 'block';
+                status.style.display = 'none';
                 // limparFormulario();
                 // finalizarAguardar();
             } else {
@@ -214,4 +220,37 @@
             console.log(`#ERRO: ${resposta}`);
         });
     }
+
+    // fetch(`/medidas/tempo-real/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+    //         if (response.ok) {
+    //             response.json().then(function (novoRegistro) {
+
+    // function mostrarInfo(idMaquina) {
+    //     fetch(`/maq_Hosp/mostrarInfoMaq/${idMaquina}`).then(resposta => {
+    //         if (resposta.ok) {
+    //             resposta.json().then(function (res) {
+    //                 var idMaq = document.getElementById('idMaq');
+    //                 var tamMemoria = document.getElementById('tamMemoria');
+    //                 var tamDisco = document.getElementById('tamDisco');
+    //                 var alaHospital = document.getElementById('alaHospital');
+    //                 var soMaq = document.getElementById('soMaq');
+
+    //                 idMaq.innerHTML = res[0].id;
+    //                 tamMemoria.innerHTM = res[0].totalMemoria;
+    //                 tamDisc.innerHTM = res[0].totalDisco
+    //                 alaHospital.innerHTM = res[0].ala;
+    //                 soMaq.innerHTM = res[0].so;
+
+    //             })
+
+    //         } else {
+
+    //             console.error('Nenhum dado encontrado ou erro na API');
+    //         }
+    //     })
+
+    //         .catch(function (error) {
+    //             console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+    //         });
+    // }
 </script>

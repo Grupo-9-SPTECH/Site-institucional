@@ -9,9 +9,10 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp">
+
 </head>
 
-<body>
+<body onload="buscarInfosIndex(), buscarUsuarios()">
     <div class="container">
         <aside>
 
@@ -95,7 +96,7 @@
                             </span>
                             <h3>Máquinas cadastradas</h3>
                         </div>
-                        <h1 id="qtd_maquinas" onload="card_index()">7</h1>
+                        <h1 id="qtd_maquinas"></h1>
                         <small class="text-muted">No momento</small>
                     </div>
 
@@ -106,7 +107,7 @@
                             </span>
                             <h3>Quantidade de usuários</h3>
                         </div>
-                        <h1 id="qtd_usuarios" onload="card_index()">6</h1>
+                        <h1 id="qtd_usuarios"></h1>
                         <small class="text-muted">No momento</small>
                     </div>
                 </div>
@@ -118,7 +119,7 @@
                         </span>
                         <h3>Qntd. de alas</h3>
                     </div>
-                    <h1 id="qtd_alas" onload="card_index()">10</h1>
+                    <h1 id="qtd_alas"></h1>
                     <small class="text-muted">No momento</small>
                 </div>
 
@@ -191,8 +192,53 @@
 
 <script>
 
-    function card_index() {
+    function buscarInfosIndex() {
+        fetch(`/buscar/buscarInfoMaq`).then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (res) {
+                    var qtd_alas = document.getElementById('qtd_alas');
+                    var qtd_maquinas = document.getElementById('qtd_maquinas');
+                    
+                    qtd_alas.innerHTML = res[0].alas;
+                    qtd_maquinas.innerHTML = res[0].contagemMaq;
+                })
+
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
 
 
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
     }
+    
+
+    function buscarUsuarios() {
+
+        fetch(`/buscar/buscarUsuarios`).then(resposta => {
+            if (resposta.ok) {
+                resposta.json().then(function (res) {
+                    var qtd_usuarios = document.getElementById('qtd_usuarios');
+                    console.log(qtd_usuarios);
+                    qtd_usuarios.innerHTML = res[0].contagemUsuarios;
+
+
+                })
+
+            } else {
+
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+
+
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
+            });
+    }
+
+
 </script>

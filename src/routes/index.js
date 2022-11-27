@@ -1,8 +1,14 @@
 var express = require("express");
 var router = express.Router();
 
-router.get("/", function (req, res) {
-    res.render("index", { title: "Express" });
+var indexController = require("../controllers/indexController");
+
+router.get("/buscarUsuarios", function (req, res) {
+    indexController.buscarUsuarios(req, res);
 });
 
-module.exports = router;
+router.get("/buscarInfoMaq", function (req, res) {
+    indexController.buscarInfosIndex(req, res);
+});
+
+module.exports = router;  
