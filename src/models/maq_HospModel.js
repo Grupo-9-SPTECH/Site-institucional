@@ -16,14 +16,14 @@ function confirma(ala_Hospitalar) {
     return database.executar(instrucao);
 }
 
-function remove(idMaquina) {
-    console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function remove():", idMaquina);
-    var instrucao = `
-        DELETE FROM maquina WHERE idMaquina = ${idMaquina};
-    `;
-    console.log("Executando a instrução SQL: \n" + instrucao);
-    return database.executar(instrucao);
-}
+// function remove(idMaquina) {
+//     console.log("ACESSEI O AVISO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function remove():", idMaquina);
+//     var instrucao = `
+//         DELETE FROM maquina WHERE idMaquina = ${idMaquina};
+//     `;
+//     console.log("Executando a instrução SQL: \n" + instrucao);
+//     return database.executar(instrucao);
+// }
 
 function cadastrar(nome_Hospital, cnpj, endereco, bairro, cidade, uf) {
     console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome_Hospital, cnpj, endereco, bairro, cidade, uf);
@@ -51,7 +51,7 @@ function mostrarInfo(idMaquina) {
 
 module.exports = {
     confirma,
-    remove, 
+    // remove, 
     cadastrar,
     mostrarInfo
     

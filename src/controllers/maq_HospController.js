@@ -30,23 +30,23 @@ function confirma(req, res) {
     }
 }
 
-function remove(req, res) {
-    var idMaquina = req.params.idMaquina;
+// function remove(req, res) {
+//     var idMaquina = req.params.idMaquina;
 
-    maq_HospModel.remove(idMaquina)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        )
-        .catch(
-            function (erro) {
-                console.log(erro);
-                console.log("Houve um erro ao deletar maquina: ", erro.sqlMessage);
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
+//     maq_HospModel.remove(idMaquina)
+//         .then(
+//             function (resultado) {
+//                 res.json(resultado);
+//             }
+//         )
+//         .catch(
+//             function (erro) {
+//                 console.log(erro);
+//                 console.log("Houve um erro ao deletar maquina: ", erro.sqlMessage);
+//                 res.status(500).json(erro.sqlMessage);
+//             }
+//         );
+// }
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -111,7 +111,7 @@ function mostrarInfo(req, res) {
 
 module.exports = {
     confirma,
-    remove,
+    // remove,
     cadastrar,
     mostrarInfo
 }

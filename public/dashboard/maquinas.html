@@ -87,16 +87,16 @@
                 <div class="div-maquinas">
                     <div class="botoes">
                         <button id="btn-add" onclick="add()">Adicionar máquina</button>
-                        <button id="btn-delete" onclick="deletar()">Remover máquina</button>
+                        <!-- <button id="btn-delete" onclick="deletar()">Remover máquina</button> -->
                     </div>
 
-                    <div class="remove-maq">
+                    <!-- <div class="remove-maq">
                         <h1>Tem certeza?</h1>
                         <div class="buttons">
                             <button id="bt_sim" onclick="remove()">Sim</button>
                             <button id="bt_nao" onclick="naoremove()">Não</button>
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="maquinas">
                         <div class="maquina">
@@ -202,29 +202,29 @@
     }
 
 
-    function remove(idMaquina) {
-        console.log("Criar função de apagar Maquina escolhida - ID" + idMaquina);
-        fetch(`/maq_Hosp/remove/${idMaquina}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (resposta) {
+    // function remove(idMaquina) {
+    //     console.log("Criar função de apagar Maquina escolhida - ID" + idMaquina);
+    //     fetch(`/maq_Hosp/remove/${idMaquina}`, {
+    //         method: "DELETE",
+    //         headers: {
+    //             "Content-Type": "application/json"
+    //         }
+    //     }).then(function (resposta) {
 
-            if (resposta.ok) {
-                window.alert("Maquina deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
-                window.location = "../dashboard/maquinas.html"
-                alert("A máquina foi excluída com sucesso!")
-                location.reload();
-            } else if (resposta.status == 404) {
-                window.alert("Deu 404!");
-            } else {
-                throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
-            }
-        }).catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-    }
+    //         if (resposta.ok) {
+    //             window.alert("Maquina deletado com sucesso pelo usuario de email: " + sessionStorage.getItem("EMAIL_USUARIO") + "!");
+    //             window.location = "../dashboard/maquinas.html"
+    //             alert("A máquina foi excluída com sucesso!")
+    //             location.reload();
+    //         } else if (resposta.status == 404) {
+    //             window.alert("Deu 404!");
+    //         } else {
+    //             throw ("Houve um erro ao tentar realizar a postagem! Código da resposta: " + resposta.status);
+    //         }
+    //     }).catch(function (resposta) {
+    //         console.log(`#ERRO: ${resposta}`);
+    //     });
+    // }
 
 
     function mostrarInfo(idMaquina) {
