@@ -407,50 +407,12 @@ b {
 
     .container .content .view .user-box{
         width: 100%;
-        flex-direction: column-reverse;
+        flex-direction: column;
         height: auto;
         padding: 5px 0;
         
         
-    }
-
-    .container .content .view .user-box .left {
-        margin: 0;
-        width: 100%;
-        
-    }
-
-    .container .content .view .user-box .user-img {
-        justify-content: center;
-        align-items: center;
-    }
-
-    .container .content .view .user-box .user-img img {
-        height: 150px;
-        justify-content: center;
-        margin-left: 25%;
-        height: 200px;
-    }
-
-    .container .content .view .user-box .user-item {
-        margin: 0px;
-        width: 100%;
-    }
-
-    .container .content .view .user-box h3 {
-        font-size: 10px;
-    }
-
-    .container .content .view .user-box span {
-        
-    }
-
-    .sidebar .close {
-        display: inline-block;
-        cursor: pointer;
-    }
-
-    
+    } 
 
 
 }

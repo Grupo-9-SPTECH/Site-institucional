@@ -94,7 +94,7 @@
                         <h1>Tem certeza?</h1>
                         <div class="buttons">
                             <button id="bt_sim" onclick="remove()">Sim</button>
-                            <button id="bt_nao">Não</button>
+                            <button id="bt_nao" onclick="naoremove()">Não</button>
                         </div>
                     </div>
 
@@ -262,6 +262,11 @@
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados do aquario p/ gráfico: ${error.message}`);
             });
+    }
+
+    function naoremove(){
+        const naoR = document.querySelector(".remove-maq")
+        naoR.style.display = 'none'
     }
 
 

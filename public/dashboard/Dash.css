@@ -631,36 +631,60 @@ b {
 .card-ideal {
     height: 18vh;
     width: 9vw;
-    background-color: #008000;
-    border: 0.5vh solid black;
+    background-color: #25c225;
+    border: 1px solid black;
     color: black;
     font-style: bold;
     margin-left: 1vw;
     text-align: center;
     padding: 0.5vh 0.5vw;
-    border-radius: 2vh;
+    border-radius: 50%;
 }
+.card-ideal h2 {
+    font-size: 18px;
+    margin-top: 13px;
+}
+.card-alerta  h2 {
+    font-size: 18px;
+}
+.card-critico  h2 {
+    font-size: 18px;
+    margin-top: 13px;
+}
+
 .card-alerta {
     height: 18vh;
     width: 9vw;
-    background-color: #ffff00;
-    border: 0.5vh solid black;
+    background-color: #f7f729;
+    border: 1px solid black;
     color: black;
     font-style: bold;
     margin-left: 1vw;
     text-align: center;
     padding: 0.5vh 0.5vw;
-    border-radius: 2vh;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    
 }
+
+.card-alerta .content {
+    background-color: transparent;
+    margin-top: 10px;
+}
+.card-alerta .content h4 {
+    font-size: 17px;
+}
+
 .card-critico {
     height: 18vh;
     width: 9vw;
-    background-color: #ff0000;
-    border: 0.5vh solid black;
+    background-color: #ee1414;
+    border: 1px solid black;
     color: black;
     font-style: bold;
     margin-left: 1vw;
     text-align: center;
     padding: 0.5vh 0.5vw;
-    border-radius: 2vh;
+    border-radius: 50%;
 }
