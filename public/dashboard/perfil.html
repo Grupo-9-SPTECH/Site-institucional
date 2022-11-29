@@ -85,7 +85,7 @@
                         </div>
                         <div class="user-item">
                             <h3>ID da máquina: </h3>
-                            <span id="idMaq">|</span>
+                            <span id="idMaq"></span>
                         </div>
                     </div>
                     <div class="right">
@@ -113,8 +113,12 @@
                     var nomeHospital = document.getElementById('nomeHospital');
                     idHospital.innerHTML = res[0].nome_Hospital;
 
+                    console.log(nome_Hospital);
+                    
+
                     var idMaqui = document.getElementById('idMaqui');
                     idMaq.innerHTML =  res[0].idMaq;
+                    console.log(idMaq);
                 })
 
             } else {
