@@ -610,11 +610,31 @@ b {
         width: 100%;
     }
 
-    .container .content .painel2 {
+    .container .content .view .painel{
+        width: 100%;
         height: auto;
+        margin-top: 13px;
+    } 
+
+    .container .content .view .painel .card-ideal {
+        width: 30%;
+        height: 50%;
+    }
+    .container .content .view .painel .card-alerta {
+        width: 30%;
+        height: 130px;
+    }
+    .container .content .view .painel .card-critico {
+        width: 30%;
+        height:30%;
     }
 
-    .container .content .painel2 .card {
+    .container .content .view .painel2 {
+        height: auto;
+        width: 100%;
+    }
+
+    .container .content .painel2 .sub-div {
         height: 100px;
     }
 
